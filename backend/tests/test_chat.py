@@ -14,23 +14,150 @@ from backend.app.services import chat as chat_service
 client = TestClient(app)
 
 
-def test_chat_is_disabled_until_provider_is_configured(monkeypatch) -> None:
+def test_chat_defaults_to_english_assistant_without_exposing_backend_config(monkeypatch) -> None:
     monkeypatch.setattr(settings, "chat_api_url", "")
     monkeypatch.setattr(settings, "chat_model", "")
     monkeypatch.setattr(settings, "chat_api_key", None)
 
     status = client.get("/chat/status")
-    response = client.post("/chat", json={"question": "नमस्ते, यह स्कोर क्या बताता है?"})
+    non_english = client.post("/chat", json={"question": "नमस्ते, यह स्कोर क्या बताता है?"})
 
     assert status.status_code == 200
     assert status.json() == {
         "configured": False,
-        "ready": False,
+        "ready": True,
         "model": None,
-        "message": "Configure a chat endpoint and model in the backend.",
+        "message": "English assistant ready.",
     }
-    assert response.status_code == 503
-    assert "PLANT_CHAT_API_URL" in response.json()["detail"]
+    assert non_english.status_code == 200
+    assert "English only" in non_english.json()["answer"]
+    assert "PLANT_CHAT_API_URL" not in non_english.json()["answer"]
+
+
+def test_context_aware_assistant_handles_all_specimen_scenarios(monkeypatch) -> None:
+    monkeypatch.setattr(settings, "chat_api_url", "")
+    monkeypatch.setattr(settings, "chat_model", "")
+    monkeypatch.setattr(settings, "chat_api_key", None)
+
+    # 1. Low-confidence Stage A + zero candidate regions
+    low_conf = client.post(
+        "/chat",
+        json={
+            "question": "What does this score mean and why are there zero candidate regions?",
+            "context": {
+                "predicted_class": "Corn_(maize)___healthy",
+                "display_label": "Corn (Maize) - Healthy",
+                "is_healthy": True,
+                "model_score": 0.266,
+                "review_threshold": 0.60,
+                "score_calibrated": False,
+                "review_required": True,
+                "stage_a_uncertain": True,
+                "screening_mode": "single_leaf",
+                "regions_checked": 12,
+                "candidate_count": 0,
+                "candidate_score_threshold": 0.60,
+                "is_inconclusive": True,
+            },
+        },
+    )
+    assert low_conf.status_code == 200
+    low_text = low_conf.json()["answer"]
+    assert "Corn (Maize) - Healthy" in low_text
+    assert "26.6%" in low_text
+    assert "uncalibrated model score" in low_text.lower()
+    assert "uncertain" in low_text.lower()
+    assert "12 examined crops" in low_text
+    assert "0 candidate regions" in low_text
+    assert "never proves that the leaf or plant is healthy" in low_text.lower()
+
+    # 2. High-confidence Stage A + candidate regions
+    high_conf = client.post(
+        "/chat",
+        json={
+            "question": "Explain the model score and candidate regions found.",
+            "context": {
+                "predicted_class": "Apple___Apple_scab",
+                "display_label": "Apple - Apple Scab",
+                "is_healthy": False,
+                "model_score": 0.956,
+                "review_threshold": 0.60,
+                "score_calibrated": False,
+                "review_required": False,
+                "stage_a_uncertain": False,
+                "screening_mode": "single_leaf",
+                "regions_checked": 9,
+                "candidate_count": 2,
+                "candidate_score_threshold": 0.60,
+                "candidate_regions": [
+                    {
+                        "predicted_class": "Apple___Apple_scab",
+                        "display_label": "Apple - Apple Scab",
+                        "confidence": 0.987,
+                        "needs_review": False,
+                    },
+                    {
+                        "predicted_class": "Apple___Apple_scab",
+                        "display_label": "Apple - Apple Scab",
+                        "confidence": 0.857,
+                        "needs_review": False,
+                    },
+                ],
+                "is_inconclusive": False,
+            },
+        },
+    )
+    assert high_conf.status_code == 200
+    high_text = high_conf.json()["answer"]
+    assert "95.6%" in high_text
+    assert "not a confirmed diagnosis" in high_text.lower()
+    assert "2 candidate region(s)" in high_text
+    assert "98.7%" in high_text
+    assert "85.7%" in high_text
+    assert "not confirmed disease diagnoses or exact lesion boundaries" in high_text.lower()
+
+    # 3. Stage A vs Stage B + Grad-CAM safeguard
+    gradcam_q = client.post(
+        "/chat",
+        json={
+            "question": "How does whole-leaf classification differ from crop screening, and does Grad-CAM segment lesions?",
+            "context": {
+                "predicted_class": "Tomato___Early_blight",
+                "display_label": "Tomato - Early Blight",
+                "model_score": 0.607,
+                "review_threshold": 0.60,
+                "screening_mode": "single_leaf",
+                "regions_checked": 9,
+                "candidate_count": 1,
+                "candidate_regions": [
+                    {
+                        "predicted_class": "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+                        "display_label": "Grape - Leaf Blight (Isariopsis Leaf Spot)",
+                        "confidence": 0.71,
+                        "needs_review": False,
+                    }
+                ],
+                "has_gradcam": True,
+            },
+        },
+    )
+    assert gradcam_q.status_code == 200
+    gc_text = gradcam_q.json()["answer"]
+    assert "stage a" in gc_text.lower() and "stage b" in gc_text.lower()
+    assert "does not segment or identify actual disease lesions" in gc_text.lower()
+
+    # 4. Missing specimen context (never invents prediction)
+    missing_ctx = client.post(
+        "/chat",
+        json={"question": "What disease does my plant have?"},
+    )
+    assert missing_ctx.status_code == 200
+    missing_text = missing_ctx.json()["answer"]
+    assert "no specimen analysis results are loaded" in missing_text.lower()
+
+    # 5. Empty input rejected cleanly
+    empty_q = client.post("/chat", json={"question": ""})
+    assert empty_q.status_code == 422
 
 
 def test_chat_endpoint_returns_provider_answer_without_exposing_credentials(monkeypatch) -> None:

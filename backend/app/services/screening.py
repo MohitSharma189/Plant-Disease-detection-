@@ -3,12 +3,15 @@ from __future__ import annotations
 import base64
 from dataclasses import dataclass
 from io import BytesIO
+import logging
 from typing import Any
 
 from PIL import Image, ImageDraw
 
 from .models import ModelRegistry, ModelUnavailableError, format_class_metadata
 
+
+logger = logging.getLogger(__name__)
 
 MIN_CANDIDATE_SCORE = 0.60
 MAX_WINDOWS = 36
@@ -204,19 +207,78 @@ def screen_plant_image(
     if model_registry.classifier is None or not model_registry.class_names:
         raise RuntimeError("A trained classifier checkpoint and class mapping are required for image screening.")
 
-    candidates: list[Candidate] = []
+    candidates_with_index: list[tuple[int, Candidate]] = []
     checked = 0
+    healthy_suppressed = 0
+    below_threshold_suppressed = 0
     overall_prediction = model_registry.predict_class(image) if mode == "single_leaf" else None
-    for left, top, right, bottom in _windows(image, mode):
+    windows = _windows(image, mode)
+    logger.info(
+        "Stage B screening started: mode=%s image_size=%sx%s generated_windows=%d threshold=%.2f",
+        mode,
+        image.size[0],
+        image.size[1],
+        len(windows),
+        MIN_CANDIDATE_SCORE,
+    )
+    for left, top, right, bottom in windows:
         crop = image.crop((left, top, right, bottom))
         if min(crop.size) < 128:
+            logger.debug(
+                "Stage B crop skipped (below 128px minimum): box=(%d,%d,%d,%d) crop_size=%sx%s",
+                left,
+                top,
+                right,
+                bottom,
+                crop.size[0],
+                crop.size[1],
+            )
             continue
         checked += 1
         prediction = model_registry.predict_class(crop)
         label = str(prediction["predicted_class"])
         confidence = float(prediction["confidence"])
-        if "healthy" in label.lower() or confidence < MIN_CANDIDATE_SCORE:
+        is_healthy_class = "healthy" in label.lower()
+        passed_threshold = confidence >= MIN_CANDIDATE_SCORE
+
+        if is_healthy_class:
+            healthy_suppressed += 1
+            logger.info(
+                "Stage B crop %d: box=(%d,%d,%d,%d) predicted_class=%s raw_score=%.4f passed_threshold=%s suppressed_by=healthy_class_filter",
+                checked,
+                left,
+                top,
+                right,
+                bottom,
+                label,
+                confidence,
+                passed_threshold,
+            )
             continue
+        if not passed_threshold:
+            below_threshold_suppressed += 1
+            logger.info(
+                "Stage B crop %d: box=(%d,%d,%d,%d) predicted_class=%s raw_score=%.4f passed_threshold=False suppressed_by=below_threshold",
+                checked,
+                left,
+                top,
+                right,
+                bottom,
+                label,
+                confidence,
+            )
+            continue
+
+        logger.info(
+            "Stage B crop %d: box=(%d,%d,%d,%d) predicted_class=%s raw_score=%.4f passed_threshold=True suppressed_by=none",
+            checked,
+            left,
+            top,
+            right,
+            bottom,
+            label,
+            confidence,
+        )
 
         confidence_calibrated = bool(
             prediction.get(
@@ -239,42 +301,91 @@ def screen_plant_image(
             if confidence_calibrated
             else "Uncalibrated Model Score"
         )
-        candidates.append(
-            Candidate(
-                box=box,
-                image=_image_data_url(crop),
-                predicted_class=label,
-                display_label=meta["display_label"],
-                crop_name=meta["crop"],
-                condition_name=meta["condition"],
-                confidence=confidence,
-                score_label=score_label,
-                confidence_calibrated=confidence_calibrated,
-                needs_review=needs_review,
-                explanation=explanation,
-                visible_evidence=evidence,
-                possible_causes=_possible_cause(label),
-                severity="Not assessed from image",
-                potential_impact="Cannot be estimated reliably from this crop or classifier score.",
-                immediate_actions=actions,
-                biological_treatment=biological,
-                chemical_treatment=chemical,
-                sources=SOURCES,
+        candidates_with_index.append(
+            (
+                checked,
+                Candidate(
+                    box=box,
+                    image=_image_data_url(crop),
+                    predicted_class=label,
+                    display_label=meta["display_label"],
+                    crop_name=meta["crop"],
+                    condition_name=meta["condition"],
+                    confidence=confidence,
+                    score_label=score_label,
+                    confidence_calibrated=confidence_calibrated,
+                    needs_review=needs_review,
+                    explanation=explanation,
+                    visible_evidence=evidence,
+                    possible_causes=_possible_cause(label),
+                    severity="Not assessed from image",
+                    potential_impact="Cannot be estimated reliably from this crop or classifier score.",
+                    immediate_actions=actions,
+                    biological_treatment=biological,
+                    chemical_treatment=chemical,
+                    sources=SOURCES,
+                ),
             )
         )
 
-    candidates.sort(key=lambda item: item.confidence, reverse=True)
-    deduplicated: list[Candidate] = []
-    for candidate in candidates:
-        if any(
-            candidate.predicted_class == existing.predicted_class
-            and _intersection_over_union(candidate.box, existing.box) >= 0.55
-            for existing in deduplicated
-        ):
+    if checked == 0:
+        logger.warning(
+            "Stage B screening aborted: mode=%s image_size=%sx%s generated_windows=%d regions_checked=0",
+            mode,
+            image.size[0],
+            image.size[1],
+            len(windows),
+        )
+        raise ValueError("No valid screening crops (>= 128x128 px) could be processed for this image.")
+
+    candidates_with_index.sort(key=lambda item: item[1].confidence, reverse=True)
+    deduplicated_with_index: list[tuple[int, Candidate]] = []
+    nms_suppressed = 0
+    cap_suppressed = 0
+    for crop_index, candidate in candidates_with_index:
+        overlapping_existing = next(
+            (
+                (existing_index, _intersection_over_union(candidate.box, existing.box))
+                for existing_index, existing in deduplicated_with_index
+                if candidate.predicted_class == existing.predicted_class
+                and _intersection_over_union(candidate.box, existing.box) >= 0.55
+            ),
+            None,
+        )
+        if overlapping_existing is not None:
+            nms_suppressed += 1
+            logger.info(
+                "Stage B crop %d: predicted_class=%s raw_score=%.4f passed_threshold=True suppressed_by=nms (iou=%.3f with crop %d)",
+                crop_index,
+                candidate.predicted_class,
+                candidate.confidence,
+                overlapping_existing[1],
+                overlapping_existing[0],
+            )
             continue
-        deduplicated.append(candidate)
-        if len(deduplicated) == MAX_CANDIDATES:
-            break
+        if len(deduplicated_with_index) == MAX_CANDIDATES:
+            cap_suppressed += 1
+            logger.info(
+                "Stage B crop %d: predicted_class=%s raw_score=%.4f passed_threshold=True suppressed_by=max_candidates_cap",
+                crop_index,
+                candidate.predicted_class,
+                candidate.confidence,
+            )
+            continue
+        deduplicated_with_index.append((crop_index, candidate))
+
+    deduplicated = [candidate for _, candidate in deduplicated_with_index]
+    logger.info(
+        "Stage B screening completed: mode=%s regions_checked=%d healthy_suppressed=%d below_threshold=%d pre_nms=%d nms_suppressed=%d cap_suppressed=%d final_candidates=%d",
+        mode,
+        checked,
+        healthy_suppressed,
+        below_threshold_suppressed,
+        len(candidates_with_index),
+        nms_suppressed,
+        cap_suppressed,
+        len(deduplicated),
+    )
 
     confidence_calibrated = bool(getattr(model_registry, "calibration_report", None))
     review_required = bool(
@@ -289,12 +400,19 @@ def screen_plant_image(
         screening_tone = "neutral"
         screening_headline = "No Candidate Regions Identified"
         screening_message = (
-            f"No candidate regions crossed the screening threshold ({MIN_CANDIDATE_SCORE:.0%}) "
-            f"across {checked} examined image crops."
+            "No candidate regions crossed the screening threshold in the examined image crops."
+        )
+        screening_explanation = (
+            "This screening result is inconclusive because no examined crop exceeded the operational screening threshold."
+        )
+        screening_recommendation = (
+            "Consider capturing a sharper, well-lit image showing the affected leaf area. "
+            "If symptoms persist, seek confirmation from an agricultural extension service or qualified plant diagnostic expert."
         )
         safety_disclaimer = (
-            "Important Safety Notice: Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. "
-            "Candidate screening only detects conspicuous foliar patches matching trained disease categories above the threshold."
+            "Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. "
+            "Candidate screening identifies image-crop regions whose disease-class scores exceed the operational threshold. "
+            "These regions are candidate areas for review, not confirmed disease or lesion locations."
         )
     else:
         screening_state = "CANDIDATES_IDENTIFIED"
@@ -305,9 +423,17 @@ def screen_plant_image(
             f"{len(deduplicated)} candidate region(s) met the foliar screening threshold ({MIN_CANDIDATE_SCORE:.0%}) "
             f"across {checked} examined crops."
         )
+        screening_explanation = (
+            f"Each highlighted crop scored at or above the {MIN_CANDIDATE_SCORE:.0%} screening threshold "
+            "after healthy-class filtering and non-maximum suppression."
+        )
+        screening_recommendation = (
+            "Inspect the highlighted candidate crops alongside the whole-leaf assessment and seek confirmation "
+            "from an agricultural extension service or qualified plant diagnostic expert before taking treatment action."
+        )
         safety_disclaimer = (
             "Bounding boxes represent exploratory candidate crops requiring inspection, "
-            "not confirmed lesion boundaries or clinical diagnoses."
+            "not confirmed lesion boundaries or confirmed plant diagnoses."
         )
 
     explainability = None
@@ -371,6 +497,8 @@ def screen_plant_image(
         "screening_tone": screening_tone,
         "screening_headline": screening_headline,
         "screening_message": screening_message,
+        "screening_explanation": screening_explanation,
+        "screening_recommendation": screening_recommendation,
         "safety_disclaimer": safety_disclaimer,
         "score_label": "Uncalibrated Model Score",
     }

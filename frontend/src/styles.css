@@ -2759,6 +2759,83 @@ h1 em {
   color: #0b1e15;
 }
 
+.section-scope-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #5c6c61;
+}
+
+.screening-summary-text {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.screening-explanation-text {
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.screening-recommendation-text {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.screening-safety-block {
+  border-top: 1px dashed #cad2c6;
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.screening-safety-heading {
+  display: block;
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #36453c;
+  letter-spacing: 0.02em;
+}
+
+.screening-safety-disclaimer {
+  margin: 0;
+  border-top: none;
+  padding-top: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #4f5f54;
+}
+
+.conversation-message-body {
+  white-space: pre-line;
+}
+
+.voice-unavailable-note {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: #5f6f64;
+  line-height: 1.4;
+}
+
+.chat-send-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: chat-spin 0.7s linear infinite;
+}
+
+@keyframes chat-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media print {
   .section-disease-info {
     page-break-inside: avoid;

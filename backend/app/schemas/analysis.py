@@ -66,11 +66,33 @@ class ChatSource(BaseModel):
     url: HttpUrl
 
 
+class ChatCandidateSummary(BaseModel):
+    predicted_class: str = Field(..., max_length=200)
+    display_label: str | None = Field(default=None, max_length=200)
+    confidence: float = Field(..., ge=0, le=1)
+    needs_review: bool = False
+    box: dict[str, int] | None = None
+
+
 class ChatContext(BaseModel):
     predicted_class: str | None = Field(default=None, max_length=200)
+    display_label: str | None = Field(default=None, max_length=200)
+    crop_name: str | None = Field(default=None, max_length=120)
+    condition_name: str | None = Field(default=None, max_length=160)
+    is_healthy: bool | None = None
     model_score: float | None = Field(default=None, ge=0, le=1)
+    review_threshold: float | None = Field(default=None, ge=0, le=1)
     score_calibrated: bool = False
     review_required: bool = False
+    stage_a_uncertain: bool | None = None
+    stage_a_status: str | None = Field(default=None, max_length=80)
+    screening_mode: str | None = Field(default=None, max_length=40)
+    regions_checked: int | None = Field(default=None, ge=0)
+    candidate_count: int | None = Field(default=None, ge=0)
+    candidate_score_threshold: float | None = Field(default=None, ge=0, le=1)
+    candidate_regions: list[ChatCandidateSummary] = Field(default_factory=list, max_length=12)
+    is_inconclusive: bool | None = None
+    has_gradcam: bool = False
     quality_note: str | None = Field(default=None, max_length=500)
     visible_evidence: str | None = Field(default=None, max_length=1000)
     limitations: list[str] = Field(default_factory=list, max_length=10)
@@ -178,7 +200,9 @@ class ScreeningResult(BaseModel):
     screening_status: str = Field(..., description="Screening status title.")
     screening_tone: str = Field(..., description="UI tone indicator: neutral or info.")
     screening_headline: str = Field(..., description="Headline describing screening outcome.")
-    screening_message: str = Field(..., description="Detailed explanation of examined candidate windows.")
+    screening_message: str = Field(..., description="Summary message describing examined candidate windows.")
+    screening_explanation: str | None = Field(default=None, description="Context and interpretation for the screening outcome.")
+    screening_recommendation: str | None = Field(default=None, description="Actionable next-step guidance for the screening outcome.")
     safety_disclaimer: str = Field(..., description="Explicit warning that absence of candidates does not mean healthy.")
     score_label: str = Field(default="Uncalibrated Model Score")
 

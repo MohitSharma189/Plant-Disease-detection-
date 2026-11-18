@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2026-11-14 19:44:27",
+    "timestamp": "2026-11-18 15:44:11",
     "model_path": "E:\\Plant Disease Detection-20261111T181021Z-1-001\\Plant Disease Detection\\saved_models\\experiments\\mobilenet_v3_small_final\\classifier.pt",
     "review_threshold": 0.6,
     "calibration_enabled": false
@@ -43,7 +43,7 @@
       "type": "REAL_MODEL_INFERENCE",
       "candidate_count": 0,
       "screening_state": "NO_CANDIDATES_IDENTIFIED",
-      "safety_disclaimer": "Important Safety Notice: Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening only detects conspicuous foliar patches matching trained disease categories above the threshold.",
+      "safety_disclaimer": "Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening identifies image-crop regions whose disease-class scores exceed the operational threshold. These regions are candidate areas for review, not confirmed disease or lesion locations.",
       "passed": true
     },
     "scenario_5_single_leaf_multiple_candidates": {
@@ -65,7 +65,7 @@
       "type": "REAL_MODEL_INFERENCE",
       "candidate_count": 0,
       "screening_state": "NO_CANDIDATES_IDENTIFIED",
-      "safety_disclaimer": "Important Safety Notice: Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening only detects conspicuous foliar patches matching trained disease categories above the threshold.",
+      "safety_disclaimer": "Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening identifies image-crop regions whose disease-class scores exceed the operational threshold. These regions are candidate areas for review, not confirmed disease or lesion locations.",
       "passed": true
     },
     "scenario_8_whole_plant_multiple_candidates": {
@@ -149,42 +149,42 @@
   },
   "benchmarks": {
     "predict_endpoint_ms": {
-      "mean": 31.785300001502037,
-      "std": 0.5813697332020119,
-      "min": 30.851200004690327,
-      "max": 32.58260000438895,
+      "mean": 20.77300000055402,
+      "std": 0.5939405622221617,
+      "min": 20.19990000007965,
+      "max": 21.822299999257666,
       "runs": [
-        31.883800009381957,
-        30.851200004690327,
-        32.09709998918697,
-        32.58260000438895,
-        31.511799999861978
+        20.19990000007965,
+        21.822299999257666,
+        20.770300001458963,
+        20.20290000109526,
+        20.869600000878563
       ]
     },
     "screen_plant_single_leaf_ms": {
-      "mean": 273.4625799988862,
-      "std": 4.374229280039185,
-      "min": 266.77050000580493,
-      "max": 278.6123999976553,
+      "mean": 197.47547999977542,
+      "std": 19.379236868844714,
+      "min": 187.20930000017688,
+      "max": 236.2260999998398,
       "runs": [
-        271.71099999395665,
-        266.77050000580493,
-        272.29239999724086,
-        278.6123999976553,
-        277.9265999997733
+        187.20930000017688,
+        188.40129999989585,
+        187.61339999946358,
+        236.2260999998398,
+        187.92729999950097
       ]
     },
     "screen_plant_whole_plant_ms": {
-      "mean": 228.77729999891017,
-      "std": 2.1174869956840623,
-      "min": 225.50390000105835,
-      "max": 231.83039999275934,
+      "mean": 143.6779400002706,
+      "std": 15.597676138338542,
+      "min": 134.16490000054182,
+      "max": 174.78699999992386,
       "runs": [
-        228.69030000583734,
-        225.50390000105835,
-        230.00969999702647,
-        227.85219999786932,
-        231.83039999275934
+        137.56040000043868,
+        135.24950000100944,
+        134.16490000054182,
+        174.78699999992386,
+        136.62789999943925
       ]
     }
   },

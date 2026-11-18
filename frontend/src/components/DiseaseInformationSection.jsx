@@ -22,12 +22,11 @@ export function DiseaseInformationSection({ diseaseInfo, overallPrediction, scre
 
           <div className="disease-context-banner banner-neutral" role="status">
             <p className="context-banner-lead">
-              <strong>Screening Outcome: </strong>
-              The screening pipeline evaluated {screening?.regions_checked || 0} candidate crops and identified 0 regions exceeding the 60% operational review threshold.
+              <strong>Field Assessment Context: </strong>
+              No disease-specific profile was selected because no localized candidate crop crossed the 60% screening threshold in whole-plant mode.
             </p>
             <p className="context-banner-sub">
-              <strong>Critical Safety Notice: </strong>
-              The absence of localized candidate proposals does <em>not</em> prove or conclude that the plant is healthy. Early-stage foliar infections, subtle bacterial spots, root rots, or unmodeled pathogens may not produce high-confidence candidate proposals.
+              Use the field scouting checklist below to inspect early-stage foliar symptoms, lower leaf surfaces, or non-foliar stress factors that image crops may miss.
             </p>
           </div>
 
@@ -150,14 +149,6 @@ export function DiseaseInformationSection({ diseaseInfo, overallPrediction, scre
 
       {/* Context-aware Explanation Banner */}
       {contextExplanation}
-
-      {/* Special Candidate Screening Threshold Notice */}
-      {noCandidatesFound && screening?.mode === "single_leaf" && (
-        <div className="candidate-threshold-notice" role="note">
-          <strong>Screening Threshold Notice: </strong>
-          The candidate-region screening algorithm examined {screening.regions_checked} crops and found 0 candidate regions above the 60% threshold. Lack of localized candidate proposals does not establish that the leaf is disease-free.
-        </div>
-      )}
 
       {/* Mandatory Educational Disclaimer */}
       <div className="disease-disclaimer-card" role="note">

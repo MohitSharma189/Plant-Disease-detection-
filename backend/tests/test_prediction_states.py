@@ -213,7 +213,12 @@ def test_scenario_5_no_candidate_screening_regions() -> None:
     assert res["candidate_count"] == 0
     assert len(res["candidate_regions"]) == 0
     assert res["regions_checked"] > 0
+    assert not res["safety_disclaimer"].lower().startswith("important safety notice")
     assert "Lack of candidate screening regions does not establish that the leaf or plant is healthy" in res["safety_disclaimer"]
+    assert res["screening_message"] == "No candidate regions crossed the screening threshold in the examined image crops."
+    assert "This screening result is inconclusive" in res["screening_explanation"]
+    assert "candidate areas for review, not confirmed disease or lesion locations" in res["safety_disclaimer"]
+    assert "agricultural extension service" in res["screening_recommendation"]
 
 
 # -----------------------------------------------------------------------------
@@ -296,4 +301,24 @@ def test_scenario_10_different_image_dimensions() -> None:
         assert res["regions_checked"] > 0
         assert res["overlay"].startswith("data:image/jpeg;base64,")
         assert res["screening_state"] in ["NO_CANDIDATES_IDENTIFIED", "CANDIDATES_IDENTIFIED"]
+
+
+def test_exact_60_percent_operational_threshold_boundary() -> None:
+    img = Image.new("RGB", (256, 256), "green")
+
+    below = screen_plant_image(img, MockRegistry("Tomato___Early_blight", 0.5999), "single_leaf")
+    assert below["overall_prediction"]["prediction_state"] == "LOW_CONFIDENCE_UNCERTAIN"
+    assert below["overall_prediction"]["is_uncertain"] is True
+    assert below["candidate_count"] == 0
+
+    exact = screen_plant_image(img, MockRegistry("Tomato___Early_blight", 0.60), "single_leaf")
+    assert exact["overall_prediction"]["prediction_state"] == "HIGH_CONFIDENCE"
+    assert exact["overall_prediction"]["is_uncertain"] is False
+    assert exact["overall_prediction"]["score_label"] == "Uncalibrated Model Score"
+    assert exact["candidate_count"] > 0
+
+    above = screen_plant_image(img, MockRegistry("Tomato___Early_blight", 0.6001), "single_leaf")
+    assert above["overall_prediction"]["prediction_state"] == "HIGH_CONFIDENCE"
+    assert above["overall_prediction"]["is_uncertain"] is False
+    assert above["candidate_count"] > 0
 

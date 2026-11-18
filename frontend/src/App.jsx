@@ -46,6 +46,17 @@ function formatDisplayLabel(raw) {
   return `${crop} - ${cond}`;
 }
 
+function stripSafetyNoticePrefix(text) {
+  if (!text) return "";
+  return String(text).replace(/^(?:important\s+safety\s+notice\s*:\s*)+/i, "").trim();
+}
+
+function formatScorePercent(score) {
+  const numeric = Number(score);
+  if (!Number.isFinite(numeric)) return "0.0%";
+  return `${(numeric * 100).toFixed(1)}%`;
+}
+
 function openHistoryDb() {
   return new Promise((resolve, reject) => {
     if (!("indexedDB" in window)) {
@@ -265,11 +276,12 @@ export default function App() {
   const [exportingHistory, setExportingHistory] = useState(false);
   const [historyRestoreId, setHistoryRestoreId] = useState(null);
   const [saveHistoryConsent, setSaveHistoryConsent] = useState(false);
+  const defaultWelcomeText = "I'm your plant-health assistant. I can help explain your specimen's predicted class, model score, screening results, uncertainty, and recommended next steps.";
   const defaultConversation = [
     {
       id: "welcome-message",
       role: "assistant",
-      text: "I’m your plant-health assistant. Ask about this crop, the model score, the uncertainty, or the next steps in English or another language.",
+      text: defaultWelcomeText,
       citations: [],
     },
   ];
@@ -314,7 +326,13 @@ export default function App() {
     try {
       const storedConversation = JSON.parse(localStorage.getItem(AGENT_MEMORY_KEY) || "null");
       if (Array.isArray(storedConversation) && storedConversation.length) {
-        setConversation(storedConversation);
+        setConversation(
+          storedConversation.map((message) => (
+            message?.id === "welcome-message"
+              ? { ...message, text: defaultWelcomeText }
+              : message
+          )),
+        );
       }
     } catch {
       setConversation(defaultConversation);
@@ -354,6 +372,8 @@ export default function App() {
   const speechRecognition = useRef(null);
   const researchRequestId = useRef(0);
   const conversationEndRef = useRef(null);
+  const chatSendingRef = useRef(false);
+  const voiceInputSupported = typeof window !== "undefined" && Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
 
   useEffect(() => {
     let active = true;
@@ -613,13 +633,9 @@ export default function App() {
   const submitChatQuestion = async (event) => {
     event.preventDefault();
     const text = chatQuestion.trim();
-    if (!text || chatSending) return;
-    if (!chatStatus?.configured) {
-      setChatError("Multilingual chat is unavailable until an OpenAI-compatible provider and multilingual model are configured.");
-      return;
-    }
-    if (!chatStatus.ready) {
-      setChatError(chatStatus.message || "The configured chat model is not ready yet.");
+    if (!text || chatSending || chatSendingRef.current) return;
+    if (chatStatus?.configured && !chatStatus.ready) {
+      setChatError("The assistant is temporarily unavailable. Please try again shortly.");
       return;
     }
     const assistantId = window.crypto?.randomUUID?.() || `${Date.now()}-assistant`;
@@ -633,6 +649,7 @@ export default function App() {
       isStreaming: true,
     };
 
+    chatSendingRef.current = true;
     setChatSending(true);
     setChatError("");
     setConversation((currentConversation) => [...currentConversation, nextUserMessage, assistantPlaceholder]);
@@ -640,7 +657,24 @@ export default function App() {
 
     try {
       const screening = analysisResult?.screening || {};
-      const lead = screening.candidate_regions?.[0] || screening.overall_prediction;
+      const overall = screening.overall_prediction || null;
+      const candidateList = Array.isArray(screening.candidate_regions) ? screening.candidate_regions : [];
+      const lead = overall || candidateList[0] || null;
+      const reviewThreshold = typeof overall?.review_threshold === "number"
+        ? overall.review_threshold
+        : (typeof screening.review_threshold === "number" ? screening.review_threshold : 0.60);
+      const candidateThreshold = typeof screening.candidate_score_threshold === "number"
+        ? screening.candidate_score_threshold
+        : 0.60;
+      const stageAUncertain = overall
+        ? Boolean(overall.is_uncertain || overall.needs_review || (typeof overall.confidence === "number" && overall.confidence < reviewThreshold))
+        : null;
+      const candidateCount = typeof screening.candidate_count === "number"
+        ? screening.candidate_count
+        : (analysisResult?.screening ? candidateList.length : null);
+      const isInconclusive = analysisResult?.screening
+        ? Boolean(stageAUncertain || (candidateCount === 0 && !overall))
+        : null;
       const suppliedSources = [
         ...(researchResult?.results || []).map((source) => ({ title: source.title, url: source.url })),
         ...(lead?.sources || screening.sources || []).map((source) => ({
@@ -655,12 +689,32 @@ export default function App() {
           question: text,
           assistant_notes: assistantNotes.trim(),
           context: {
-            predicted_class: lead?.predicted_class || null,
-            model_score: typeof lead?.confidence === "number" ? lead.confidence : null,
-            score_calibrated: Boolean(lead?.confidence_calibrated ?? screening.confidence_calibrated),
-            review_required: Boolean(screening.review_required || lead?.needs_review),
+            predicted_class: overall?.predicted_class || null,
+            display_label: overall?.display_label || (overall?.predicted_class ? formatDisplayLabel(overall.predicted_class) : null),
+            crop_name: overall?.crop_name || null,
+            condition_name: overall?.condition_name || null,
+            is_healthy: typeof overall?.is_healthy === "boolean" ? overall.is_healthy : null,
+            model_score: typeof overall?.confidence === "number" ? overall.confidence : null,
+            review_threshold: reviewThreshold,
+            score_calibrated: Boolean(overall?.confidence_calibrated ?? screening.confidence_calibrated),
+            review_required: Boolean(screening.review_required || overall?.needs_review),
+            stage_a_uncertain: stageAUncertain,
+            stage_a_status: overall?.prediction_state || overall?.prediction_status || null,
+            screening_mode: screening.mode || null,
+            regions_checked: typeof screening.regions_checked === "number" ? screening.regions_checked : null,
+            candidate_count: candidateCount,
+            candidate_score_threshold: candidateThreshold,
+            candidate_regions: candidateList.slice(0, 8).map((region) => ({
+              predicted_class: region.predicted_class,
+              display_label: region.display_label || formatDisplayLabel(region.predicted_class),
+              confidence: region.confidence,
+              needs_review: Boolean(region.needs_review),
+              box: region.box || null,
+            })),
+            is_inconclusive: isInconclusive,
+            has_gradcam: Boolean(screening.explainability),
             quality_note: analysisResult?.quality?.is_blurry
-              ? `Image may be blurry (quality score ${analysisResult.quality.blur_score}).`
+              ? `Image may be blurry (Laplacian sharpness score ${analysisResult.quality.blur_score.toFixed(1)}).`
               : null,
             visible_evidence: lead?.visible_evidence || null,
             limitations: (screening.limitations || []).slice(0, 10),
@@ -670,9 +724,9 @@ export default function App() {
         }),
       });
       const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(payload.detail || "The multilingual chat provider could not answer.");
+      if (!response.ok) throw new Error(payload.detail || "The assistant could not complete your question.");
 
-      const fullAnswer = payload.answer || "I’m ready to help. Please ask a follow-up question about the plant or the score.";
+      const fullAnswer = payload.answer || "I'm ready to help. Ask a follow-up question about your specimen or model results.";
       const citations = payload.citations || [];
       setConversation((currentConversation) => currentConversation.map((message) => (
         message.id === assistantId
@@ -710,6 +764,7 @@ export default function App() {
       }));
       setChatError(requestError.message);
     } finally {
+      chatSendingRef.current = false;
       setChatSending(false);
     }
   };
@@ -761,21 +816,29 @@ export default function App() {
   };
 
   const startVoiceInput = () => {
+    if (voiceListening && speechRecognition.current) {
+      speechRecognition.current.stop();
+      setVoiceListening(false);
+      return;
+    }
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
-      setChatError("Speech recognition is not supported by this browser. You can type your question instead.");
+      setChatError("Voice input is not currently supported in this browser. Please type your question instead.");
       return;
     }
     setChatError("");
     const recognition = new SpeechRecognition();
-    recognition.lang = speechLocaleFor();
+    recognition.lang = chatStatus?.configured ? speechLocaleFor() : "en-US";
     recognition.interimResults = false;
     recognition.onresult = (event) => {
-      setChatQuestion(event.results?.[0]?.[0]?.transcript || "");
+      const transcript = event.results?.[0]?.[0]?.transcript || "";
+      if (transcript) {
+        setChatQuestion((current) => (current.trim() ? `${current.trim()} ${transcript}` : transcript));
+      }
       setVoiceListening(false);
     };
     recognition.onerror = (event) => {
-      setChatError(`Speech recognition failed (${event.error || "unknown error"}). Type your question instead.`);
+      setChatError(`Voice input could not complete (${event.error || "unknown error"}). You can type your question instead.`);
       setVoiceListening(false);
     };
     recognition.onend = () => setVoiceListening(false);
@@ -784,7 +847,7 @@ export default function App() {
       recognition.start();
       setVoiceListening(true);
     } catch (voiceError) {
-      setChatError(`Could not start speech recognition: ${voiceError.message}`);
+      setChatError(`Could not start voice input: ${voiceError.message}`);
       setVoiceListening(false);
     }
   };
@@ -1017,11 +1080,11 @@ export default function App() {
   }[view]), [view]);
 
   const quickPrompts = [
-    "Summarize this diagnosis and the main uncertainty.",
-    "What does this score mean for the plant?",
-    "Explain the uncertainty and next steps.",
-    "Which disease is most likely from this image?",
-    "What should I check in the field before treating it?",
+    "Summarize this screening result and the main uncertainty.",
+    "What does this uncalibrated model score mean?",
+    "Explain the candidate-region screening outcome.",
+    "How does whole-leaf classification differ from crop screening?",
+    "What should I check in the field before taking action?",
   ];
 
   const handleSuggestedPrompt = (prompt) => setChatQuestion(prompt);
@@ -1200,11 +1263,14 @@ export default function App() {
                       <div>
                         <span className="section-tag">Section A</span>
                         <h2 id="section-a-heading" className="section-title">Whole-Leaf Classification</h2>
+                        <p className="section-scope-note">Full-image classification evaluated separately from crop-level candidate screening.</p>
                       </div>
                       {analysisResult.screening.overall_prediction && (
                         <span className={`status-pill ${analysisResult.screening.overall_prediction.is_uncertain ? "pill-amber" : "pill-good"}`}>
                           <StatusDot tone={analysisResult.screening.overall_prediction.is_uncertain ? "warn" : "good"} />
-                          {analysisResult.screening.overall_prediction.prediction_status || (analysisResult.screening.overall_prediction.needs_review ? "Uncertain Prediction" : "Model Prediction")}
+                          {analysisResult.screening.overall_prediction.is_uncertain
+                            ? "Uncertain"
+                            : (analysisResult.screening.overall_prediction.prediction_status || "Model Prediction")}
                         </span>
                       )}
                     </div>
@@ -1225,7 +1291,7 @@ export default function App() {
                           </div>
                           <div className="score-block">
                             <span className="score-value">
-                              {Math.round(analysisResult.screening.overall_prediction.confidence * 100)}%
+                              {formatScorePercent(analysisResult.screening.overall_prediction.confidence)}
                             </span>
                             <span className="score-badge">
                               {analysisResult.screening.overall_prediction.score_label || scoreLabel}
@@ -1248,7 +1314,7 @@ export default function App() {
                           {analysisResult.screening.overall_prediction.is_healthy && analysisResult.screening.overall_prediction.is_uncertain && (
                             <div className="healthy-warning-alert" role="alert">
                               <strong>Caution on healthy prediction: </strong>
-                              Because this confidence score ({Math.round(analysisResult.screening.overall_prediction.confidence * 100)}%) is below the operational review threshold ({Math.round((analysisResult.screening.overall_prediction.review_threshold || 0.60) * 100)}%), this specimen must <em>never</em> be assumed healthy or disease-free. A low-confidence healthy prediction is an inconclusive tentative match. Professional diagnostic inspection is strongly recommended.
+                              Because this confidence score ({formatScorePercent(analysisResult.screening.overall_prediction.confidence)}) is below the operational review threshold ({Math.round((analysisResult.screening.overall_prediction.review_threshold || 0.60) * 100)}%), this specimen must <em>never</em> be assumed healthy or disease-free. A low-confidence healthy prediction is an inconclusive tentative match. Professional diagnostic inspection is strongly recommended.
                             </div>
                           )}
                         </div>
@@ -1272,9 +1338,10 @@ export default function App() {
                       <div>
                         <span className="section-tag">Section B</span>
                         <h2 id="section-b-heading" className="section-title">Candidate-Region Screening</h2>
+                        <p className="section-scope-note">Separate crop-based screening for foliar regions exceeding the operational threshold.</p>
                       </div>
                       <span className={`status-pill ${analysisResult.screening.candidate_count > 0 ? "pill-info" : "pill-neutral"}`}>
-                        {analysisResult.screening.screening_status || (analysisResult.screening.candidate_count ? `${analysisResult.screening.candidate_count} Candidate(s) Identified` : "No Candidates Identified")}
+                        {analysisResult.screening.screening_status || (analysisResult.screening.candidate_count ? `${analysisResult.screening.candidate_count} Candidate(s) Identified` : "No Candidate Regions Identified")}
                       </span>
                     </div>
 
@@ -1293,7 +1360,7 @@ export default function App() {
                       </div>
                       <div className="metric-item">
                         <span className="metric-label">Candidate Threshold</span>
-                        <strong className="metric-value">{Math.round((analysisResult.screening.candidate_score_threshold || 0.60) * 100)}% score</strong>
+                        <strong className="metric-value">{Math.round((analysisResult.screening.candidate_score_threshold || 0.60) * 100)}% uncalibrated score</strong>
                       </div>
                     </div>
 
@@ -1301,12 +1368,28 @@ export default function App() {
                       <p className="screening-summary-text">
                         {analysisResult.screening.screening_message || (analysisResult.screening.candidate_count
                           ? `${analysisResult.screening.candidate_count} candidate region(s) met the foliar screening threshold.`
-                          : `No regions met the candidate screening threshold across the ${analysisResult.screening.regions_checked} examined crops.`)}
+                          : "No candidate regions crossed the screening threshold in the examined image crops.")}
                       </p>
-                      <p className="screening-safety-disclaimer">
-                        <strong>Important Safety Notice: </strong>
-                        {analysisResult.screening.safety_disclaimer || "Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening identifies conspicuous foliar patches matching trained disease categories above the threshold and does not detect subtle, systemic, or unindexed conditions."}
+                      <p className="screening-explanation-text">
+                        {analysisResult.screening.screening_explanation || (analysisResult.screening.candidate_count === 0
+                          ? "This screening result is inconclusive because no examined crop exceeded the operational screening threshold."
+                          : "Each highlighted crop met the screening threshold after healthy-class filtering and non-maximum suppression.")}
                       </p>
+                      <p className="screening-recommendation-text">
+                        <strong>Recommendation: </strong>
+                        {analysisResult.screening.screening_recommendation || (analysisResult.screening.candidate_count === 0
+                          ? "Consider capturing a sharper, well-lit image showing the affected leaf area. If symptoms persist, seek confirmation from an agricultural extension service or qualified plant diagnostic expert."
+                          : "Inspect the highlighted candidate crops alongside the whole-leaf assessment and seek confirmation from an agricultural extension service or qualified plant diagnostic expert before taking treatment action.")}
+                      </p>
+                      <div className="screening-safety-block" role="note">
+                        <strong className="screening-safety-heading">Important Safety Notice</strong>
+                        <p className="screening-safety-disclaimer">
+                          {stripSafetyNoticePrefix(
+                            analysisResult.screening.safety_disclaimer ||
+                            "Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening identifies image-crop regions whose disease-class scores exceed the operational threshold. These regions are candidate areas for review, not confirmed disease or lesion locations."
+                          )}
+                        </p>
+                      </div>
                     </div>
 
                     {analysisResult.screening.overlay && (
@@ -1335,7 +1418,7 @@ export default function App() {
                             Dataset label: <code>{region.predicted_class}</code>
                           </span>
                           <span className="confidence" style={{ marginBottom: "10px" }}>
-                            {Math.round(region.confidence * 100)}% {region.score_label || scoreLabel}
+                            {formatScorePercent(region.confidence)} {region.score_label || scoreLabel}
                           </span>
                           {region.needs_review && (
                             <p className="warning-banner" role="status" style={{ marginTop: "4px", marginBottom: "10px" }}>
@@ -1389,24 +1472,32 @@ export default function App() {
                   <section className="conversation-panel" aria-label="Guided follow-up questions">
                     <div className="chat-header">
                       <div>
-                        <span className="meta-label">Plant assistant</span>
-                        <strong>Ask the AI</strong>
+                        <span className="meta-label">Plant-health assistant</span>
+                        <strong>Ask about this specimen</strong>
                       </div>
-                      <span className={`chat-status-pill ${chatStatus?.ready ? "ready" : "waiting"}`}>
-                        {chatStatus?.ready ? "Online" : chatStatus?.message || "Checking"}
+                      <span className={`chat-status-pill ${!chatStatus || chatStatus.ready ? "ready" : "waiting"}`}>
+                        {!chatStatus
+                          ? "Checking"
+                          : chatStatus.configured
+                            ? (chatStatus.ready ? "Online" : "Unavailable")
+                            : "English · Ready"}
                       </span>
                     </div>
-                    <p className="conversation-disclosure">When you submit, your question, recent chat turns, assistant notes, and diagnosis summary go to the configured AI provider. Images are never sent. The assistant detects your question’s language; answer quality depends on the model. Browser speech services may process microphone audio.</p>
+                    <p className="conversation-disclosure">
+                      {chatStatus?.configured
+                        ? "Your question, recent chat turns, assistant notes, and specimen analysis summary are used to answer. Uploaded images are never sent."
+                        : "The assistant currently supports English and answers using this specimen's analysis results. Uploaded images are never sent to external chat services."}
+                    </p>
                     <div className="agent-context-strip">
                       <span>Context memory: {agentMemoryLength} turns</span>
                       <span>Assistant notes: {assistantNotes.trim() ? "set" : "none"}</span>
-                      <span>Mode: source-aware agent</span>
+                      <span>Language: {chatStatus?.configured ? "Multilingual" : "English"}</span>
                       <span>Learning ratings: {learningStatus?.ratings || 0}</span>
                       {(learningStatus?.ratings || 0) > 0 && <button className="learning-reset-button" type="button" onClick={resetAssistantLearning} disabled={learningSaving}>Reset learned styles</button>}
                     </div>
-                    <p className="learning-disclosure">Ratings tune answer style only. Use “Remember this” on a user message to save its text as assistant context for future questions.</p>
+                    <p className="learning-disclosure">Use “Remember this” on a message to keep preferences for follow-up questions.</p>
                     <details className="assistant-notes">
-                      <summary>Teach assistant: preferences and background</summary>
+                      <summary>Assistant notes: preferences and field context</summary>
                       <label htmlFor="assistant-notes-input">What should it remember?</label>
                       <textarea
                         id="assistant-notes-input"
@@ -1416,21 +1507,25 @@ export default function App() {
                         placeholder="For example: use short numbered steps; I grow tomatoes in a humid climate; define technical terms."
                         rows="3"
                       />
-                      <p>Saved in this browser only. These notes are sent with questions to the configured AI provider when consent is enabled. Do not enter passwords or other sensitive information.</p>
+                      <p>Saved in this browser only. Do not enter passwords or other sensitive information.</p>
                       {assistantNotes && <button type="button" className="learning-reset-button" onClick={() => setAssistantNotes("")}>Clear notes</button>}
                     </details>
                     <div className="quick-prompts" aria-label="Suggested questions">
                       {quickPrompts.map((prompt) => (
-                        <button key={prompt} type="button" className="quick-prompt" onClick={() => handleSuggestedPrompt(prompt)}>
+                        <button key={prompt} type="button" className="quick-prompt" onClick={() => handleSuggestedPrompt(prompt)} disabled={chatSending}>
                           {prompt}
                         </button>
                       ))}
                     </div>
-                    {chatStatus && !chatStatus.ready && <p className="warning-banner" role="status">{chatStatus.message} No chat text is sent until the model is ready.</p>}
-                    <div className="conversation-list" aria-live="polite">
+                    {chatStatus?.configured && !chatStatus.ready && (
+                      <p className="warning-banner" role="status">
+                        The assistant is temporarily unavailable. Please try again shortly.
+                      </p>
+                    )}
+                    <div className="conversation-list" aria-live="polite" aria-busy={chatSending}>
                       {conversation.map((message) => <article className={`conversation-message ${message.role}`} key={message.id}>
                         <span className="meta-label">{message.role === "user" ? "You" : "Assistant"}</span>
-                        <p>{message.text || (message.isStreaming ? "Thinking…" : "")}</p>
+                        <p className="conversation-message-body">{message.text || (message.isStreaming ? "Generating response…" : "")}</p>
                         {message.role === "user" && <button className="remember-message-button" type="button" disabled={message.remembered} onClick={() => rememberUserMessage(message.id)}>{message.remembered ? "Remembered" : "Remember this"}</button>}
                         {message.citations?.length > 0 && <div className="conversation-citations">{message.citations.map((citation) => <a key={citation.url} href={citation.url} target="_blank" rel="noreferrer">{citation.title}</a>)}</div>}
                         {message.role === "assistant" && message.learningId && !message.isStreaming && <div className="answer-feedback" aria-label="Rate this response">
@@ -1438,32 +1533,55 @@ export default function App() {
                           <button type="button" aria-pressed={message.learningFeedback === true} className={message.learningFeedback === true ? "selected" : ""} disabled={message.feedbackSubmitting || message.learningFeedback != null} onClick={() => rateAssistantAnswer(message.id, true)}>Helpful</button>
                           <button type="button" aria-pressed={message.learningFeedback === false} className={message.learningFeedback === false ? "selected" : ""} disabled={message.feedbackSubmitting || message.learningFeedback != null} onClick={() => rateAssistantAnswer(message.id, false)}>Not helpful</button>
                         </div>}
-                        {message.role === "assistant" && <button className="speech-button" type="button" title="Read response aloud" aria-label="Read response aloud" onClick={() => speakText(message.text)}><Icon name="speaker" /></button>}
+                        {message.role === "assistant" && !message.isStreaming && message.text && <button className="speech-button" type="button" title="Read response aloud" aria-label="Read response aloud" onClick={() => speakText(message.text)}><Icon name="speaker" /></button>}
                       </article>)}
                     </div>
                     <form className="conversation-form" onSubmit={submitChatQuestion}>
-                      <label className="sr-only" htmlFor="plant-question">Ask a follow-up question</label>
+                      <label className="sr-only" htmlFor="plant-question">Ask about your specimen or model results</label>
                       <textarea
                         id="plant-question"
                         value={chatQuestion}
                         maxLength={1000}
+                        disabled={chatSending}
                         onChange={(event) => setChatQuestion(event.target.value)}
                         onKeyDown={(event) => {
                           if (event.key === "Enter" && !event.shiftKey) {
                             event.preventDefault();
-                            if (chatQuestion.trim()) {
+                            if (chatQuestion.trim() && !chatSending && !chatSendingRef.current) {
                               submitChatQuestion(event);
                             }
                           }
                         }}
-                        placeholder="Ask about the score, alternatives, limitations, or sources"
+                        placeholder="Ask about your specimen or model results..."
                         rows="2"
                       />
                       <div className="conversation-actions">
-                        <button className="history-open-button" type="button" onClick={startVoiceInput} disabled={voiceListening}><Icon name="mic" />{voiceListening ? "Listening…" : "Speak question"}</button>
+                        <button
+                          className="history-open-button"
+                          type="button"
+                          onClick={startVoiceInput}
+                          disabled={!voiceInputSupported || chatSending}
+                          title={voiceInputSupported ? (voiceListening ? "Stop voice input" : "Speak your question") : "Voice input is not currently supported in this browser"}
+                        >
+                          <Icon name="mic" />
+                          {!voiceInputSupported
+                            ? "Voice input unavailable"
+                            : (voiceListening ? "Listening… (click to stop)" : "Speak question")}
+                        </button>
                         {speechPlaying && <button className="history-open-button" type="button" onClick={stopSpeech}><Icon name="stop" />Stop audio</button>}
-                        <button className="chat-send-button" type="submit" disabled={!chatQuestion.trim() || chatSending} title={chatSending ? "Sending question" : "Send question"} aria-label={chatSending ? "Sending question" : "Send question"}><Icon name="arrow" /></button>
+                        <button
+                          className="chat-send-button"
+                          type="submit"
+                          disabled={!chatQuestion.trim() || chatSending}
+                          title={chatSending ? "Generating response…" : "Send question"}
+                          aria-label={chatSending ? "Generating response…" : "Send question"}
+                        >
+                          {chatSending ? <span className="chat-send-spinner" aria-hidden="true" /> : <Icon name="arrow" />}
+                        </button>
                       </div>
+                      {!voiceInputSupported && (
+                        <p className="voice-unavailable-note">Voice input is not currently supported in this browser. Type your question above.</p>
+                      )}
                     </form>
                     {chatError && <p className="warning-banner" role="status">{chatError}</p>}
                     <div ref={conversationEndRef} />
@@ -1476,7 +1594,7 @@ export default function App() {
                       {analysisResult.screening.overall_prediction ? (
                         <div>
                           <p><b>Predicted Class:</b> {analysisResult.screening.overall_prediction.display_label || formatDisplayLabel(analysisResult.screening.overall_prediction.predicted_class)} (<code>{analysisResult.screening.overall_prediction.predicted_class}</code>)</p>
-                          <p><b>Model Score:</b> {Math.round(analysisResult.screening.overall_prediction.confidence * 100)}% ({analysisResult.screening.overall_prediction.score_label || scoreLabel})</p>
+                          <p><b>Model Score:</b> {formatScorePercent(analysisResult.screening.overall_prediction.confidence)} ({analysisResult.screening.overall_prediction.score_label || scoreLabel})</p>
                           <p><b>Status:</b> {analysisResult.screening.overall_prediction.prediction_status || (analysisResult.screening.overall_prediction.needs_review ? "Uncertain Prediction" : "Model Prediction")}</p>
                           <p><b>Explanation:</b> {analysisResult.screening.overall_prediction.explanation}</p>
                           <p><b>Recommendation:</b> {analysisResult.screening.overall_prediction.recommendation}</p>
@@ -1487,13 +1605,15 @@ export default function App() {
                     </section>
                     <section>
                       <h2>Section B: Candidate-Region Screening</h2>
-                      <p><b>Screening Status:</b> {analysisResult.screening.screening_status || (analysisResult.screening.candidate_count ? `${analysisResult.screening.candidate_count} candidates identified` : "No candidate regions identified")}</p>
-                      <p>{analysisResult.screening.candidate_count} candidate region(s) identified from {analysisResult.screening.regions_checked} scanned crops at {Math.round((analysisResult.screening.candidate_score_threshold || 0.60) * 100)}% threshold.</p>
-                      <p><b>Safety notice:</b> {analysisResult.screening.safety_disclaimer || "Lack of candidates does not establish that the leaf or plant is healthy."}</p>
+                      <p><b>Screening Status:</b> {analysisResult.screening.screening_status || (analysisResult.screening.candidate_count ? `${analysisResult.screening.candidate_count} candidates identified` : "No Candidate Regions Identified")}</p>
+                      <p>{analysisResult.screening.candidate_count} candidate region(s) identified from {analysisResult.screening.regions_checked} scanned crops at {Math.round((analysisResult.screening.candidate_score_threshold || 0.60) * 100)}% uncalibrated score threshold.</p>
+                      {analysisResult.screening.screening_explanation && <p>{analysisResult.screening.screening_explanation}</p>}
+                      {analysisResult.screening.screening_recommendation && <p><b>Recommendation:</b> {analysisResult.screening.screening_recommendation}</p>}
+                      <p><b>Important Safety Notice:</b> {stripSafetyNoticePrefix(analysisResult.screening.safety_disclaimer || "Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free.")}</p>
                     </section>
                     <section><h2>Original image with candidate crop locations</h2><img className="print-main-image" src={analysisResult.screening.overlay || preview} alt="Original uploaded image with candidate crop locations marked" /><p>Outlined boxes show candidate image crops, not exact diseased pixels or verified lesion boundaries.</p></section>
                     {analysisResult.screening.explainability && <section><h2>Grad-CAM model attribution</h2><img className="print-main-image" src={analysisResult.screening.explainability.image} alt={`Grad-CAM attribution for ${analysisResult.screening.explainability.class_name}`} /><p>{analysisResult.screening.explainability.explanation}</p></section>}
-                    <section><h2>Candidate regions</h2>{analysisResult.screening.candidate_regions.length ? analysisResult.screening.candidate_regions.map((region, index) => <article className="print-region" key={`print-${region.box.left}-${region.box.top}-${region.predicted_class}`}><h3>Region {index + 1}: {region.display_label || formatDisplayLabel(region.predicted_class)} (<code>{region.predicted_class}</code>)</h3><img src={region.image} alt={`Candidate crop ${index + 1}`} /><p><b>Model score ({region.score_label || scoreLabel}):</b> {Math.round(region.confidence * 100)}%</p>{region.needs_review && <p>Below the operational review threshold; professional confirmation is recommended.</p>}<p><b>Assessment:</b> {region.explanation}</p><p><b>Evidence:</b> {region.visible_evidence}</p><p><b>Possible cause:</b> {region.possible_causes.join(" ")}</p><p><b>Severity/impact:</b> {region.severity}; {region.potential_impact}</p><p><b>Suggested safe actions:</b></p><ul>{region.immediate_actions.map((action) => <li key={`print-${action}`}>{action}</li>)}</ul><p><b>Biological treatment:</b> {region.biological_treatment}</p><p><b>Chemical treatment:</b> {region.chemical_treatment}</p></article>) : <p>No crop met the candidate threshold. This does not demonstrate that the plant is healthy.</p>}</section>
+                    <section><h2>Candidate regions</h2>{analysisResult.screening.candidate_regions.length ? analysisResult.screening.candidate_regions.map((region, index) => <article className="print-region" key={`print-${region.box.left}-${region.box.top}-${region.predicted_class}`}><h3>Region {index + 1}: {region.display_label || formatDisplayLabel(region.predicted_class)} (<code>{region.predicted_class}</code>)</h3><img src={region.image} alt={`Candidate crop ${index + 1}`} /><p><b>Model score ({region.score_label || scoreLabel}):</b> {formatScorePercent(region.confidence)}</p>{region.needs_review && <p>Below the operational review threshold; professional confirmation is recommended.</p>}<p><b>Assessment:</b> {region.explanation}</p><p><b>Evidence:</b> {region.visible_evidence}</p><p><b>Possible cause:</b> {region.possible_causes.join(" ")}</p><p><b>Severity/impact:</b> {region.severity}; {region.potential_impact}</p><p><b>Suggested safe actions:</b></p><ul>{region.immediate_actions.map((action) => <li key={`print-${action}`}>{action}</li>)}</ul><p><b>Biological treatment:</b> {region.biological_treatment}</p><p><b>Chemical treatment:</b> {region.chemical_treatment}</p></article>) : <p>No crop met the candidate threshold. This does not demonstrate that the plant is healthy.</p>}</section>
                     {activeDiseaseInfo && (
                       <section className="print-disease-info">
                         <h2>Section C: {activeDiseaseInfo.title || "Disease Information"}</h2>
@@ -1613,7 +1733,7 @@ export default function App() {
                       {deletingHistoryId === record.id ? "Deleting…" : "Delete this analysis"}
                     </button>
                   </div>
-                  <span className="confidence">{typeof record.confidence === "number" ? `${Math.round(record.confidence * 100)}% score` : "Score not reported"}</span>
+                  <span className="confidence">{typeof record.confidence === "number" ? `${formatScorePercent(record.confidence)} score` : "Score not reported"}</span>
                 </article>
               ))}
               <button className="secondary-button" onClick={() => setView("analysis")}>Start a new analysis <Icon name="arrow" /></button>
