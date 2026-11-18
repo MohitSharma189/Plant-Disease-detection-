@@ -1,0 +1,10 @@
+operational_stratum,image_count,total_leaves,candidate_leaf_recall,localized_classification_accuracy,false_positives_per_image,mean_latency_ms
+Single Leaf (N=1),157,157,0.1274,0.4500,4.10,115.14
+Medium Resolution (600-1200px),70,128,0.1719,0.2273,3.61,108.63
+Isolated Leaves,190,260,0.1885,0.3265,3.84,116.79
+All Test Images,236,452,0.1814,0.3659,3.52,117.16
+Low Resolution (<600px),82,150,0.2667,0.4250,4.15,77.52
+High Resolution (>1200px),84,174,0.1149,0.4000,2.82,162.96
+Moderate Foliage (N=2-4),60,167,0.2814,0.3404,2.30,127.19
+Overlapping Leaves,46,192,0.1719,0.4242,2.20,118.69
+Dense Foliage (N>=5),19,128,0.1172,0.3333,2.58,102.22

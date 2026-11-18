@@ -1,0 +1,183 @@
+{
+  "checkpoint_verification": {
+    "baseline_hash": "1aef041f87ad115b65aea90ad9c32584fda5689e063fcd750e6144f364a1bc2f",
+    "phase5_pth_hash": "6190f54c56ebbb7f4a663b5eb88a53c6f70926e482e084d76d624c2a12725009",
+    "phase5_ts_hash": "6fff52f1449e82e663ad1d4f884e5fa3576e2c04e517e9274f1c6237e9071213",
+    "deployed_loaded_path": "saved_models\\experiments\\mobilenet_v3_small_final\\classifier.pt",
+    "deployed_loaded_hash": "6fff52f1449e82e663ad1d4f884e5fa3576e2c04e517e9274f1c6237e9071213",
+    "verified": true
+  },
+  "configuration": {
+    "temperature": 1.0,
+    "review_threshold": 0.6,
+    "calibration_report": null,
+    "image_size": 224
+  },
+  "comparison_results": [
+    {
+      "specimen": "0055dd26-23a7-4415-ac61-e0b44ebfaf80___RS_HL 5672.JPG",
+      "ground_truth": "Apple___healthy",
+      "offline_pred": "Apple___healthy",
+      "offline_score": 0.9899128675460815,
+      "fastapi_pred": "Apple___healthy",
+      "fastapi_score": 0.9899128675460815,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "00075aa8-d81a-4184-8541-b692b78d398a___FREC_Scab 3335.JPG",
+      "ground_truth": "Apple___Apple_scab",
+      "offline_pred": "Apple___Apple_scab",
+      "offline_score": 0.9555572867393494,
+      "fastapi_pred": "Apple___Apple_scab",
+      "fastapi_score": 0.9555572867393494,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "0008f3d3-2f85-4973-be9a-1b520b8b59fc___JR_HL 4092.JPG",
+      "ground_truth": "Cherry_(including_sour)___healthy",
+      "offline_pred": "Cherry_(including_sour)___healthy",
+      "offline_score": 0.9989595413208008,
+      "fastapi_pred": "Cherry_(including_sour)___healthy",
+      "fastapi_score": 0.9989595413208008,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "00705aa7-5ea2-4419-9440-8ba65e108eb9___FREC_Pwd.M 0267.JPG",
+      "ground_truth": "Cherry_(including_sour)___Powdery_mildew",
+      "offline_pred": "Cherry_(including_sour)___Powdery_mildew",
+      "offline_score": 0.9904083013534546,
+      "fastapi_pred": "Cherry_(including_sour)___Powdery_mildew",
+      "fastapi_score": 0.9904083013534546,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "00031d74-076e-4aef-b040-e068cd3576eb___R.S_HL 8315 copy 2.jpg",
+      "ground_truth": "Corn_(maize)___healthy",
+      "offline_pred": "Corn_(maize)___healthy",
+      "offline_score": 0.8973402976989746,
+      "fastapi_pred": "Corn_(maize)___healthy",
+      "fastapi_score": 0.8973402976989746,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "RS_Rust 1563.JPG",
+      "ground_truth": "Corn_(maize)___Common_rust_",
+      "offline_pred": "Corn_(maize)___Common_rust_",
+      "offline_score": 0.9869354367256165,
+      "fastapi_pred": "Corn_(maize)___Common_rust_",
+      "fastapi_score": 0.9869354367256165,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "00090b0f-c140-4e77-8d20-d39f67b75fcc___FAM_B.Rot 0376.JPG",
+      "ground_truth": "Grape___Black_rot",
+      "offline_pred": "Grape___Black_rot",
+      "offline_score": 0.9668312668800354,
+      "fastapi_pred": "Grape___Black_rot",
+      "fastapi_score": 0.9668312668800354,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "0051e5e8-d1c4-4a84-bf3a-a426cdad6285___RS_LB 4640.JPG",
+      "ground_truth": "Potato___Late_blight",
+      "offline_pred": "Potato___Late_blight",
+      "offline_score": 0.7653511762619019,
+      "fastapi_pred": "Potato___Late_blight",
+      "fastapi_score": 0.7653511762619019,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "0012b9d2-2130-4a06-a834-b1f3af34f57e___RS_Erly.B 8389.JPG",
+      "ground_truth": "Tomato___Early_blight",
+      "offline_pred": "Tomato___Early_blight",
+      "offline_score": 0.6072749495506287,
+      "fastapi_pred": "Tomato___Early_blight",
+      "fastapi_score": 0.6072749495506287,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    },
+    {
+      "specimen": "000146ff-92a4-4db6-90ad-8fce2ae4fddd___GH_HL Leaf 259.1.JPG",
+      "ground_truth": "Tomato___healthy",
+      "offline_pred": "Tomato___healthy",
+      "offline_score": 0.986645519733429,
+      "fastapi_pred": "Tomato___healthy",
+      "fastapi_score": 0.986645519733429,
+      "max_delta": 0.0,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "score_label": "Uncalibrated Model Score",
+      "confidence_calibrated": false,
+      "review_threshold": 0.6
+    }
+  ],
+  "low_confidence_cases": {
+    "low_conf_diseased": {
+      "file": "2d5265d2-be99-4e9f-a085-d309cc01b751___FREC_Scab 3023.JPG",
+      "predicted": "Pepper,_bell___Bacterial_spot",
+      "confidence": 0.4931577146053314,
+      "state": "LOW_CONFIDENCE_UNCERTAIN"
+    },
+    "low_conf_healthy": {
+      "file": "3652fd23-ba4c-4958-8db8-3aff8f614dfd___FREC_Scab 3377.JPG",
+      "predicted": "Apple___healthy",
+      "confidence": 0.545330822467804,
+      "state": "LOW_CONFIDENCE_UNCERTAIN"
+    }
+  },
+  "max_delta_overall": 0.0,
+  "latency": {
+    "forward_pass": {
+      "mean_ms": 12.380575999122811,
+      "std_ms": 1.302242601684627,
+      "median_ms": 12.577750007039867,
+      "min_ms": 9.837999998126179,
+      "max_ms": 16.57629999681376,
+      "p95_ms": 13.979074991220841,
+      "p99_ms": 15.997645013412697
+    },
+    "endpoint_predict": {
+      "mean_ms": 22.067130001087207,
+      "std_ms": 1.4540142177939355,
+      "median_ms": 21.837749998667277,
+      "min_ms": 19.378700002562255,
+      "max_ms": 25.68940000492148,
+      "p95_ms": 24.267964998580283,
+      "p99_ms": 25.14942000751034
+    }
+  }
+}

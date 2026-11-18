@@ -1,0 +1,3223 @@
+[
+  {
+    "filename": "Blueberries+autumn+leaves7.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Blueberries+autumn+leaves7.jpg",
+    "width": 1600,
+    "height": 1200,
+    "leaf_annotations": [
+      {
+        "class": "Blueberry leaf",
+        "box": [
+          590,
+          562,
+          977,
+          1136
+        ]
+      },
+      {
+        "class": "Blueberry leaf",
+        "box": [
+          1022,
+          358,
+          1600,
+          774
+        ]
+      },
+      {
+        "class": "Blueberry leaf",
+        "box": [
+          841,
+          78,
+          1282,
+          483
+        ]
+      },
+      {
+        "class": "Blueberry leaf",
+        "box": [
+          508,
+          227,
+          827,
+          593
+        ]
+      },
+      {
+        "class": "Blueberry leaf",
+        "box": [
+          286,
+          483,
+          475,
+          694
+        ]
+      },
+      {
+        "class": "Blueberry leaf",
+        "box": [
+          248,
+          688,
+          547,
+          1088
+        ]
+      },
+      {
+        "class": "Blueberry leaf",
+        "box": [
+          6,
+          3,
+          176,
+          461
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "1576389-early%20blight%20symptoms.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\1576389-early%20blight%20symptoms.jpg",
+    "width": 382,
+    "height": 261,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          44,
+          29,
+          382,
+          246
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "beg.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\beg.jpg",
+    "width": 460,
+    "height": 330,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf bacterial spot",
+        "box": [
+          78,
+          15,
+          262,
+          314
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "White-mould-potato-blight.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\White-mould-potato-blight.jpg",
+    "width": 1200,
+    "height": 1164,
+    "leaf_annotations": [
+      {
+        "class": "Potato leaf late blight",
+        "box": [
+          4,
+          10,
+          1200,
+          1127
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Septoria-461x346.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Septoria-461x346.jpg",
+    "width": 461,
+    "height": 346,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          4,
+          36,
+          429,
+          319
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Early-blight.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Early-blight.jpg",
+    "width": 598,
+    "height": 332,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          112,
+          43,
+          394,
+          143
+        ]
+      },
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          14,
+          184,
+          177,
+          258
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          3,
+          1,
+          472,
+          479
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          411,
+          1,
+          640,
+          238
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "BacterialSpot10.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\BacterialSpot10.jpg",
+    "width": 300,
+    "height": 450,
+    "leaf_annotations": [
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          50,
+          93,
+          268,
+          418
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "web1_copy_early-blight-6-_0.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\web1_copy_early-blight-6-_0.jpg",
+    "width": 640,
+    "height": 413,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          200,
+          57,
+          590,
+          373
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "87A_Pot_Early.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\87A_Pot_Early.jpg",
+    "width": 400,
+    "height": 267,
+    "leaf_annotations": [
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          194,
+          140,
+          282,
+          267
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          274,
+          146,
+          356,
+          267
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          160,
+          94,
+          239,
+          154
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          139,
+          46,
+          195,
+          98
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          187,
+          8,
+          242,
+          52
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          63,
+          132,
+          170,
+          247
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          65,
+          78,
+          168,
+          163
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          59,
+          18,
+          153,
+          100
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "peach-prunus-persica-roter-ellerstaedter-prunus-persica-roter-ellerstaedter-DAM2J4.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\peach-prunus-persica-roter-ellerstaedter-prunus-persica-roter-ellerstaedter-DAM2J4.jpg",
+    "width": 1300,
+    "height": 960,
+    "leaf_annotations": [
+      {
+        "class": "Peach leaf",
+        "box": [
+          501,
+          89,
+          688,
+          367
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          956,
+          151,
+          1141,
+          692
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          2,
+          517,
+          144,
+          870
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          752,
+          653,
+          938,
+          865
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          1025,
+          555,
+          1229,
+          863
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          569,
+          736,
+          695,
+          866
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          1,
+          105,
+          203,
+          375
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          4,
+          249,
+          238,
+          553
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          392,
+          5,
+          725,
+          421
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "1b9155649757248759cdbe7d83cc94c0.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\1b9155649757248759cdbe7d83cc94c0.jpg",
+    "width": 736,
+    "height": 981,
+    "leaf_annotations": [
+      {
+        "class": "Cherry leaf",
+        "box": [
+          176,
+          154,
+          485,
+          934
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "18183295-H.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\18183295-H.jpg",
+    "width": 1024,
+    "height": 700,
+    "leaf_annotations": [
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          28,
+          75,
+          379,
+          581
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          246,
+          1,
+          456,
+          157
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "AppleScab14.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\AppleScab14.jpg",
+    "width": 480,
+    "height": 320,
+    "leaf_annotations": [
+      {
+        "class": "Apple Scab Leaf",
+        "box": [
+          16,
+          75,
+          408,
+          247
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Raspberry41.JPG.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Raspberry41.JPG.jpg",
+    "width": 1600,
+    "height": 1378,
+    "leaf_annotations": [
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          57,
+          553,
+          727,
+          917
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          449,
+          229,
+          837,
+          743
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          639,
+          729,
+          861,
+          1208
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          1092,
+          463,
+          1394,
+          784
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "TC3.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\TC3.jpg",
+    "width": 920,
+    "height": 725,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf bacterial spot",
+        "box": [
+          16,
+          91,
+          905,
+          685
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "swcdg4.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\swcdg4.jpg",
+    "width": 694,
+    "height": 583,
+    "leaf_annotations": [
+      {
+        "class": "Corn rust leaf",
+        "box": [
+          7,
+          7,
+          307,
+          449
+        ]
+      },
+      {
+        "class": "Corn rust leaf",
+        "box": [
+          429,
+          6,
+          688,
+          413
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "16629068955_3092aa68a5_b.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\16629068955_3092aa68a5_b.jpg",
+    "width": 768,
+    "height": 1024,
+    "leaf_annotations": [
+      {
+        "class": "Squash Powdery mildew leaf",
+        "box": [
+          8,
+          1,
+          756,
+          958
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Northern-Corn-Leaf-Blight.ashx.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Northern-Corn-Leaf-Blight.ashx.jpg",
+    "width": 500,
+    "height": 734,
+    "leaf_annotations": [
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          100,
+          172,
+          271,
+          730
+        ]
+      },
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          81,
+          113,
+          496,
+          500
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "wd0phb4.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\wd0phb4.jpg",
+    "width": 478,
+    "height": 640,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          160,
+          41,
+          442,
+          616
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "peach-leaf-isolated-white-background-42295151.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\peach-leaf-isolated-white-background-42295151.jpg",
+    "width": 1300,
+    "height": 916,
+    "leaf_annotations": [
+      {
+        "class": "Peach leaf",
+        "box": [
+          952,
+          145,
+          1063,
+          452
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          961,
+          476,
+          1077,
+          652
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          96,
+          380,
+          975,
+          670
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          431,
+          209,
+          946,
+          484
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Rust%20on%20Brandywine_ADJ.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Rust%20on%20Brandywine_ADJ.jpg",
+    "width": 1236,
+    "height": 824,
+    "leaf_annotations": [
+      {
+        "class": "Apple rust leaf",
+        "box": [
+          347,
+          47,
+          844,
+          778
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "quince5_600px.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\quince5_600px.jpg",
+    "width": 600,
+    "height": 450,
+    "leaf_annotations": [
+      {
+        "class": "Apple rust leaf",
+        "box": [
+          2,
+          2,
+          599,
+          444
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "black-rot-leaves.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\black-rot-leaves.jpg",
+    "width": 500,
+    "height": 321,
+    "leaf_annotations": [
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          1,
+          134,
+          244,
+          309
+        ]
+      },
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          180,
+          25,
+          476,
+          264
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "04.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\04.jpg",
+    "width": 844,
+    "height": 1500,
+    "leaf_annotations": [
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          129,
+          678,
+          543,
+          927
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          507,
+          773,
+          844,
+          1100
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          333,
+          1041,
+          829,
+          1500
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          467,
+          265,
+          786,
+          519
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          95,
+          342,
+          281,
+          504
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          281,
+          468,
+          526,
+          651
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "IMG_0863_1500x1500%253E.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\IMG_0863_1500x1500%253E.jpg",
+    "width": 1500,
+    "height": 1125,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          182,
+          143,
+          888,
+          1097
+        ]
+      },
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          705,
+          10,
+          1269,
+          1038
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "peach-with-leaf-isolated-on-white-picture-id466696757.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\peach-with-leaf-isolated-on-white-picture-id466696757.jpg",
+    "width": 1024,
+    "height": 1024,
+    "leaf_annotations": [
+      {
+        "class": "Peach leaf",
+        "box": [
+          43,
+          130,
+          600,
+          478
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "earlyblight.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\earlyblight.jpg",
+    "width": 298,
+    "height": 246,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          2,
+          2,
+          156,
+          241
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "black-rot-guignardia-bidwellii-leaf-spot-lesions-on-muscadine-grape-x85jjd.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\black-rot-guignardia-bidwellii-leaf-spot-lesions-on-muscadine-grape-x85jjd.jpg",
+    "width": 435,
+    "height": 320,
+    "leaf_annotations": [
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          1,
+          32,
+          150,
+          205
+        ]
+      },
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          126,
+          62,
+          307,
+          272
+        ]
+      },
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          276,
+          1,
+          430,
+          117
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Guignardia_bidwellii_%28black_rot%29_on_grape_1.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Guignardia_bidwellii_%28black_rot%29_on_grape_1.jpg",
+    "width": 3072,
+    "height": 1936,
+    "leaf_annotations": [
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          7,
+          16,
+          3038,
+          1936
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Powdery+Milew+Squash+003.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Powdery+Milew+Squash+003.jpg",
+    "width": 1200,
+    "height": 1600,
+    "leaf_annotations": [
+      {
+        "class": "Squash Powdery mildew leaf",
+        "box": [
+          23,
+          3,
+          1200,
+          1580
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "early-blight-or-target-spot-alternaria-solani-lesions-on-a-tomato-BY9J8R.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\early-blight-or-target-spot-alternaria-solani-lesions-on-a-tomato-BY9J8R.jpg",
+    "width": 307,
+    "height": 320,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          49,
+          28,
+          1275,
+          1258
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "BacterialSpot09.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\BacterialSpot09.jpg",
+    "width": 480,
+    "height": 320,
+    "leaf_annotations": [
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          17,
+          28,
+          222,
+          316
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          275,
+          16,
+          461,
+          316
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "AppleLeavesInRain.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\AppleLeavesInRain.jpg",
+    "width": 800,
+    "height": 1025,
+    "leaf_annotations": [
+      {
+        "class": "Apple leaf",
+        "box": [
+          392,
+          358,
+          533,
+          708
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          371,
+          768,
+          545,
+          1025
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          68,
+          660,
+          361,
+          989
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          26,
+          272,
+          362,
+          608
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          72,
+          191,
+          360,
+          341
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          1,
+          2,
+          177,
+          284
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          499,
+          13,
+          800,
+          236
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          345,
+          1,
+          522,
+          286
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          568,
+          565,
+          800,
+          927
+        ]
+      },
+      {
+        "class": "Apple leaf",
+        "box": [
+          451,
+          306,
+          720,
+          666
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "img_20110302_170719.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\img_20110302_170719.jpg",
+    "width": 1936,
+    "height": 2592,
+    "leaf_annotations": [
+      {
+        "class": "Strawberry leaf",
+        "box": [
+          842,
+          1382,
+          1297,
+          1986
+        ]
+      },
+      {
+        "class": "Strawberry leaf",
+        "box": [
+          1001,
+          1164,
+          1557,
+          1527
+        ]
+      },
+      {
+        "class": "Strawberry leaf",
+        "box": [
+          316,
+          1338,
+          934,
+          1790
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "B2750027-Cedar-apple_rust-SPL.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\B2750027-Cedar-apple_rust-SPL.jpg",
+    "width": 800,
+    "height": 531,
+    "leaf_annotations": [
+      {
+        "class": "Apple rust leaf",
+        "box": [
+          89,
+          78,
+          726,
+          420
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "grape-leaves-3368435.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\grape-leaves-3368435.jpg",
+    "width": 957,
+    "height": 1300,
+    "leaf_annotations": [
+      {
+        "class": "grape leaf",
+        "box": [
+          1,
+          18,
+          290,
+          418
+        ]
+      },
+      {
+        "class": "grape leaf",
+        "box": [
+          268,
+          281,
+          624,
+          628
+        ]
+      },
+      {
+        "class": "grape leaf",
+        "box": [
+          36,
+          541,
+          236,
+          765
+        ]
+      },
+      {
+        "class": "grape leaf",
+        "box": [
+          272,
+          813,
+          458,
+          980
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "f204d9b6516c961f48502e0b7ae3f746.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\f204d9b6516c961f48502e0b7ae3f746.jpg",
+    "width": 420,
+    "height": 420,
+    "leaf_annotations": [
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          95,
+          2,
+          267,
+          304
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          220,
+          98,
+          343,
+          174
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          237,
+          168,
+          334,
+          313
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "b085c28357a5f7839c2dcf582acc9e52.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\b085c28357a5f7839c2dcf582acc9e52.jpg",
+    "width": 736,
+    "height": 981,
+    "leaf_annotations": [
+      {
+        "class": "Bell_pepper leaf",
+        "box": [
+          281,
+          232,
+          597,
+          620
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf",
+        "box": [
+          1,
+          465,
+          388,
+          838
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf",
+        "box": [
+          430,
+          2,
+          736,
+          441
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "220px-Guignardia_bidwellii_08.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\220px-Guignardia_bidwellii_08.jpg",
+    "width": 220,
+    "height": 152,
+    "leaf_annotations": [
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          111,
+          2,
+          202,
+          90
+        ]
+      },
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          22,
+          56,
+          121,
+          152
+        ]
+      },
+      {
+        "class": "grape leaf black rot",
+        "box": [
+          31,
+          1,
+          130,
+          34
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "rust-3.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\rust-3.jpg",
+    "width": 1836,
+    "height": 3264,
+    "leaf_annotations": [
+      {
+        "class": "Corn rust leaf",
+        "box": [
+          17,
+          607,
+          1835,
+          1950
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "tomato_yellow_leaf_curl_virus.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\tomato_yellow_leaf_curl_virus.jpg",
+    "width": 1500,
+    "height": 750,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          1017,
+          660,
+          1110,
+          750
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          225,
+          231,
+          301,
+          266
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          374,
+          339,
+          440,
+          431
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          557,
+          280,
+          654,
+          360
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          768,
+          353,
+          826,
+          387
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          816,
+          292,
+          872,
+          343
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          760,
+          481,
+          775,
+          546
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          789,
+          479,
+          823,
+          510
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          768,
+          427,
+          813,
+          464
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          646,
+          443,
+          686,
+          508
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          696,
+          458,
+          715,
+          494
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          727,
+          445,
+          749,
+          477
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          1010,
+          441,
+          1054,
+          508
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          1079,
+          432,
+          1114,
+          482
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          1163,
+          405,
+          1185,
+          432
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          1228,
+          386,
+          1261,
+          465
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          1288,
+          379,
+          1334,
+          438
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          862,
+          545,
+          916,
+          606
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Corn-NCLB.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Corn-NCLB.jpg",
+    "width": 1024,
+    "height": 758,
+    "leaf_annotations": [
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          8,
+          216,
+          1023,
+          723
+        ]
+      },
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          541,
+          127,
+          870,
+          447
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "img_0509.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\img_0509.jpg",
+    "width": 800,
+    "height": 600,
+    "leaf_annotations": [
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          519,
+          239,
+          797,
+          457
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          386,
+          260,
+          503,
+          427
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          410,
+          112,
+          535,
+          272
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          95,
+          323,
+          251,
+          514
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          216,
+          295,
+          324,
+          388
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          92,
+          254,
+          233,
+          322
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          324,
+          408,
+          520,
+          555
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "628x471.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\628x471.jpg",
+    "width": 588,
+    "height": 471,
+    "leaf_annotations": [
+      {
+        "class": "Squash Powdery mildew leaf",
+        "box": [
+          76,
+          103,
+          464,
+          423
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "cedar-apple-rust-gymnosporangium-juniperi-pustules-on-apple-leaf-lower-surface-X12A9H.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\cedar-apple-rust-gymnosporangium-juniperi-pustules-on-apple-leaf-lower-surface-X12A9H.jpg",
+    "width": 1087,
+    "height": 1390,
+    "leaf_annotations": [
+      {
+        "class": "Apple rust leaf",
+        "box": [
+          171,
+          154,
+          908,
+          1241
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "grapes+003.JPG.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\grapes+003.JPG.jpg",
+    "width": 1600,
+    "height": 1071,
+    "leaf_annotations": [
+      {
+        "class": "grape leaf",
+        "box": [
+          220,
+          124,
+          805,
+          446
+        ]
+      },
+      {
+        "class": "grape leaf",
+        "box": [
+          144,
+          343,
+          783,
+          860
+        ]
+      },
+      {
+        "class": "grape leaf",
+        "box": [
+          736,
+          411,
+          1521,
+          856
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Leaf-mold-web.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Leaf-mold-web.jpg",
+    "width": 1500,
+    "height": 1000,
+    "leaf_annotations": [
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          573,
+          812,
+          816,
+          1000
+        ]
+      },
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          1,
+          112,
+          275,
+          789
+        ]
+      },
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          678,
+          28,
+          1158,
+          1000
+        ]
+      },
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          167,
+          42,
+          569,
+          959
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "5516100468998144-600x272.jpeg.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\5516100468998144-600x272.jpeg.jpg",
+    "width": 600,
+    "height": 272,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          348,
+          9,
+          539,
+          231
+        ]
+      },
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          169,
+          8,
+          314,
+          242
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "2477703364_0c94646b48.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\2477703364_0c94646b48.jpg",
+    "width": 500,
+    "height": 336,
+    "leaf_annotations": [
+      {
+        "class": "Bell_pepper leaf",
+        "box": [
+          19,
+          23,
+          340,
+          328
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Southern-rust-2_Wise.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Southern-rust-2_Wise.jpg",
+    "width": 1920,
+    "height": 1440,
+    "leaf_annotations": [
+      {
+        "class": "Corn rust leaf",
+        "box": [
+          293,
+          6,
+          1393,
+          1433
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "c-204-raspberry.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\c-204-raspberry.jpg",
+    "width": 1092,
+    "height": 603,
+    "leaf_annotations": [
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          446,
+          206,
+          655,
+          478
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          654,
+          306,
+          883,
+          603
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          827,
+          130,
+          1092,
+          482
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          273,
+          1,
+          620,
+          245
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          1,
+          202,
+          206,
+          552
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          69,
+          419,
+          667,
+          603
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "670px-User-Completed-Image-Identify-Cherry-Trees-2015.12.05-23.48.57.0.jpeg.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\670px-User-Completed-Image-Identify-Cherry-Trees-2015.12.05-23.48.57.0.jpeg.jpg",
+    "width": 670,
+    "height": 670,
+    "leaf_annotations": [
+      {
+        "class": "Cherry leaf",
+        "box": [
+          177,
+          414,
+          670,
+          670
+        ]
+      },
+      {
+        "class": "Cherry leaf",
+        "box": [
+          320,
+          1,
+          534,
+          189
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "TC6-300x194.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\TC6-300x194.jpg",
+    "width": 300,
+    "height": 194,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf bacterial spot",
+        "box": [
+          52,
+          8,
+          268,
+          192
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Bacterial-spot-tomato.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Bacterial-spot-tomato.jpg",
+    "width": 226,
+    "height": 150,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf bacterial spot",
+        "box": [
+          91,
+          15,
+          152,
+          116
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "raspberry_leaves.JPG.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\raspberry_leaves.JPG.jpg",
+    "width": 1600,
+    "height": 1200,
+    "leaf_annotations": [
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          5,
+          370,
+          554,
+          589
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          411,
+          123,
+          691,
+          526
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          403,
+          499,
+          666,
+          719
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          376,
+          640,
+          674,
+          843
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          570,
+          782,
+          1010,
+          1200
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "grayleafspot_earleaf.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\grayleafspot_earleaf.jpg",
+    "width": 432,
+    "height": 679,
+    "leaf_annotations": [
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          143,
+          1,
+          378,
+          647
+        ]
+      },
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          46,
+          12,
+          149,
+          355
+        ]
+      },
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          80,
+          129,
+          250,
+          293
+        ]
+      },
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          311,
+          114,
+          429,
+          298
+        ]
+      },
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          345,
+          230,
+          412,
+          562
+        ]
+      },
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          286,
+          491,
+          430,
+          679
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "IMG_1526.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\IMG_1526.jpg",
+    "width": 3264,
+    "height": 2448,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf late blight",
+        "box": [
+          547,
+          280,
+          2088,
+          3022
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "grey_leaf_spot.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\grey_leaf_spot.jpg",
+    "width": 778,
+    "height": 437,
+    "leaf_annotations": [
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          1,
+          1,
+          777,
+          436
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "gosswilt_TMB.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\gosswilt_TMB.jpg",
+    "width": 340,
+    "height": 255,
+    "leaf_annotations": [
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          1,
+          47,
+          340,
+          234
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Peach-leaves.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Peach-leaves.jpg",
+    "width": 1536,
+    "height": 2048,
+    "leaf_annotations": [
+      {
+        "class": "Peach leaf",
+        "box": [
+          790,
+          627,
+          1132,
+          1348
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          311,
+          780,
+          732,
+          1701
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "bac_spot_tomato_leaf_l.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\bac_spot_tomato_leaf_l.jpg",
+    "width": 400,
+    "height": 300,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf bacterial spot",
+        "box": [
+          2,
+          44,
+          353,
+          217
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "5816170621_e1cce08736_z.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\5816170621_e1cce08736_z.jpg",
+    "width": 640,
+    "height": 427,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf late blight",
+        "box": [
+          25,
+          191,
+          340,
+          404
+        ]
+      },
+      {
+        "class": "Tomato leaf late blight",
+        "box": [
+          106,
+          70,
+          547,
+          419
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "IMG_42231.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\IMG_42231.jpg",
+    "width": 3264,
+    "height": 2448,
+    "leaf_annotations": [
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          38,
+          978,
+          3226,
+          2448
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "tomato_leaf_spots_1500x1500%253E.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\tomato_leaf_spots_1500x1500%253E.jpg",
+    "width": 1500,
+    "height": 848,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          626,
+          115,
+          1134,
+          718
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Tomato_Septoria_Leaf_Spot.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Tomato_Septoria_Leaf_Spot.jpg",
+    "width": 523,
+    "height": 418,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          3,
+          53,
+          140,
+          327
+        ]
+      },
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          207,
+          74,
+          475,
+          414
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "IMG_1762.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\IMG_1762.jpg",
+    "width": 3264,
+    "height": 2448,
+    "leaf_annotations": [
+      {
+        "class": "Corn rust leaf",
+        "box": [
+          6,
+          8,
+          3264,
+          1816
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "scab_on_leaf.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\scab_on_leaf.jpg",
+    "width": 119,
+    "height": 200,
+    "leaf_annotations": [
+      {
+        "class": "Apple Scab Leaf",
+        "box": [
+          1,
+          67,
+          100,
+          200
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "img_1916.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\img_1916.jpg",
+    "width": 5184,
+    "height": 3888,
+    "leaf_annotations": [
+      {
+        "class": "Apple Scab Leaf",
+        "box": [
+          800,
+          177,
+          4075,
+          3515
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "bacterial-leaf-streak-corn.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\bacterial-leaf-streak-corn.jpg",
+    "width": 1024,
+    "height": 473,
+    "leaf_annotations": [
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          4,
+          22,
+          1019,
+          473
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Risk+factors+for+Goss%E2%80%99s+wilt+and+leaf+blight+Percent+surface+residue.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Risk+factors+for+Goss%E2%80%99s+wilt+and+leaf+blight+Percent+surface+residue.jpg",
+    "width": 960,
+    "height": 720,
+    "leaf_annotations": [
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          606,
+          109,
+          703,
+          622
+        ]
+      },
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          722,
+          175,
+          891,
+          560
+        ]
+      },
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          651,
+          185,
+          719,
+          492
+        ]
+      },
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          810,
+          252,
+          951,
+          456
+        ]
+      },
+      {
+        "class": "Corn leaf blight",
+        "box": [
+          680,
+          352,
+          766,
+          653
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "dew-on-a-leaf-stock-image-1226834.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\dew-on-a-leaf-stock-image-1226834.jpg",
+    "width": 870,
+    "height": 1392,
+    "leaf_annotations": [
+      {
+        "class": "Strawberry leaf",
+        "box": [
+          1,
+          1,
+          847,
+          1026
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "3761.400x400_0_0.jpeg.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\3761.400x400_0_0.jpeg.jpg",
+    "width": 400,
+    "height": 300,
+    "leaf_annotations": [
+      {
+        "class": "Squash Powdery mildew leaf",
+        "box": [
+          24,
+          28,
+          233,
+          228
+        ]
+      },
+      {
+        "class": "Squash Powdery mildew leaf",
+        "box": [
+          197,
+          23,
+          363,
+          231
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Soybean%20edamame%20leaf.JPG.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Soybean%20edamame%20leaf.JPG.jpg",
+    "width": 4048,
+    "height": 3340,
+    "leaf_annotations": [
+      {
+        "class": "Soyabean leaf",
+        "box": [
+          1143,
+          4,
+          2730,
+          2111
+        ]
+      },
+      {
+        "class": "Soyabean leaf",
+        "box": [
+          2093,
+          1364,
+          3940,
+          2851
+        ]
+      },
+      {
+        "class": "Soyabean leaf",
+        "box": [
+          193,
+          1588,
+          2040,
+          2874
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "1c421500ddd390c90596ad2cf12d5429.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\1c421500ddd390c90596ad2cf12d5429.jpg",
+    "width": 240,
+    "height": 208,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          166,
+          30,
+          202,
+          75
+        ]
+      },
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          196,
+          59,
+          240,
+          89
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "d41c86a650e49b8066d6b347d8e9d3ad.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\d41c86a650e49b8066d6b347d8e9d3ad.jpg",
+    "width": 205,
+    "height": 216,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          114,
+          38,
+          148,
+          59
+        ]
+      },
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          39,
+          23,
+          73,
+          68
+        ]
+      },
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          124,
+          2,
+          173,
+          36
+        ]
+      },
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          167,
+          31,
+          201,
+          73
+        ]
+      },
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          135,
+          61,
+          177,
+          105
+        ]
+      },
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          124,
+          133,
+          167,
+          193
+        ]
+      },
+      {
+        "class": "Tomato leaf mosaic virus",
+        "box": [
+          85,
+          111,
+          133,
+          163
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "leaf_mold_tomato5x1200.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\leaf_mold_tomato5x1200.jpg",
+    "width": 1190,
+    "height": 1989,
+    "leaf_annotations": [
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          137,
+          62,
+          1159,
+          1989
+        ]
+      },
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          1,
+          59,
+          606,
+          732
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "bacspot_confused_w_pseudomonas.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\bacspot_confused_w_pseudomonas.jpg",
+    "width": 900,
+    "height": 482,
+    "leaf_annotations": [
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          151,
+          135,
+          218,
+          263
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          335,
+          225,
+          438,
+          436
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          258,
+          212,
+          384,
+          331
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          1,
+          50,
+          78,
+          208
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          113,
+          49,
+          212,
+          113
+        ]
+      },
+      {
+        "class": "Bell_pepper leaf spot",
+        "box": [
+          476,
+          21,
+          900,
+          430
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "5086-early.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\5086-early.jpg",
+    "width": 250,
+    "height": 301,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          46,
+          25,
+          237,
+          276
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Pest2369.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Pest2369.jpg",
+    "width": 600,
+    "height": 600,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf late blight",
+        "box": [
+          69,
+          11,
+          487,
+          583
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "curcurbit-powdery-mildew-erysiphe-cichoracearum-showing-development-BMMRPG.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\curcurbit-powdery-mildew-erysiphe-cichoracearum-showing-development-BMMRPG.jpg",
+    "width": 1300,
+    "height": 956,
+    "leaf_annotations": [
+      {
+        "class": "Squash Powdery mildew leaf",
+        "box": [
+          42,
+          87,
+          1163,
+          845
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Potato-blight-leaves-B.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Potato-blight-leaves-B.jpg",
+    "width": 668,
+    "height": 363,
+    "leaf_annotations": [
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          325,
+          67,
+          457,
+          242
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          453,
+          171,
+          541,
+          331
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          473,
+          113,
+          580,
+          222
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          474,
+          28,
+          619,
+          196
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          122,
+          256,
+          253,
+          324
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          208,
+          316,
+          307,
+          363
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "stock-photo-two-sides-of-peach-leaf-isolate-on-white-17407162.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\stock-photo-two-sides-of-peach-leaf-isolate-on-white-17407162.jpg",
+    "width": 1500,
+    "height": 1461,
+    "leaf_annotations": [
+      {
+        "class": "Peach leaf",
+        "box": [
+          15,
+          65,
+          415,
+          1260
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          399,
+          57,
+          727,
+          1317
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          738,
+          98,
+          1132,
+          1329
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          1150,
+          120,
+          1469,
+          1287
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "lb4_l.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\lb4_l.jpg",
+    "width": 508,
+    "height": 796,
+    "leaf_annotations": [
+      {
+        "class": "Potato leaf late blight",
+        "box": [
+          4,
+          1,
+          432,
+          776
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "russian-2-319-dt-2010-leaves-high-tunnel-9-29-2014-c.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\russian-2-319-dt-2010-leaves-high-tunnel-9-29-2014-c.jpg",
+    "width": 2758,
+    "height": 1566,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf",
+        "box": [
+          619,
+          13,
+          1062,
+          746
+        ]
+      },
+      {
+        "class": "Tomato leaf",
+        "box": [
+          104,
+          939,
+          829,
+          1566
+        ]
+      },
+      {
+        "class": "Tomato leaf",
+        "box": [
+          1305,
+          1026,
+          1632,
+          1456
+        ]
+      },
+      {
+        "class": "Tomato leaf",
+        "box": [
+          1619,
+          259,
+          2369,
+          699
+        ]
+      },
+      {
+        "class": "Tomato leaf",
+        "box": [
+          1039,
+          16,
+          1505,
+          526
+        ]
+      },
+      {
+        "class": "Tomato leaf",
+        "box": [
+          1,
+          319,
+          199,
+          739
+        ]
+      },
+      {
+        "class": "Tomato leaf",
+        "box": [
+          2122,
+          703,
+          2449,
+          1073
+        ]
+      },
+      {
+        "class": "Tomato leaf",
+        "box": [
+          322,
+          639,
+          662,
+          866
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Faske%20Southern%20rust%20of%20corn.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Faske%20Southern%20rust%20of%20corn.jpg",
+    "width": 350,
+    "height": 466,
+    "leaf_annotations": [
+      {
+        "class": "Corn rust leaf",
+        "box": [
+          198,
+          2,
+          349,
+          385
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "b3a52d4eda0deedc34260c4dee847a5b.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\b3a52d4eda0deedc34260c4dee847a5b.jpg",
+    "width": 250,
+    "height": 249,
+    "leaf_annotations": [
+      {
+        "class": "Potato leaf late blight",
+        "box": [
+          2,
+          1,
+          249,
+          248
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "a61a6-raspberry_leaf_tea_pregnancy.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\a61a6-raspberry_leaf_tea_pregnancy.jpg",
+    "width": 1600,
+    "height": 1066,
+    "leaf_annotations": [
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          385,
+          102,
+          838,
+          450
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          161,
+          395,
+          713,
+          625
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "two-peach-leaves-isolated-on-white-picture-id519433636.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\two-peach-leaves-isolated-on-white-picture-id519433636.jpg",
+    "width": 1024,
+    "height": 1024,
+    "leaf_annotations": [
+      {
+        "class": "Peach leaf",
+        "box": [
+          188,
+          92,
+          677,
+          762
+        ]
+      },
+      {
+        "class": "Peach leaf",
+        "box": [
+          396,
+          125,
+          765,
+          983
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "art_15017325188173_a24a66.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\art_15017325188173_a24a66.jpg",
+    "width": 550,
+    "height": 412,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          312,
+          279,
+          354,
+          347
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          210,
+          180,
+          258,
+          235
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          436,
+          299,
+          490,
+          412
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          448,
+          281,
+          519,
+          316
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          414,
+          223,
+          477,
+          252
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          90,
+          155,
+          159,
+          238
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          6,
+          289,
+          80,
+          405
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          96,
+          263,
+          130,
+          296
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          107,
+          289,
+          155,
+          375
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          147,
+          256,
+          190,
+          290
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          165,
+          239,
+          224,
+          282
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          210,
+          292,
+          267,
+          408
+        ]
+      },
+      {
+        "class": "Tomato leaf yellow virus",
+        "box": [
+          371,
+          267,
+          426,
+          380
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "photo-1.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\photo-1.jpg",
+    "width": 1000,
+    "height": 750,
+    "leaf_annotations": [
+      {
+        "class": "Tomato leaf bacterial spot",
+        "box": [
+          258,
+          263,
+          851,
+          604
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "leaf_mold1.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\leaf_mold1.jpg",
+    "width": 600,
+    "height": 368,
+    "leaf_annotations": [
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          322,
+          37,
+          600,
+          347
+        ]
+      },
+      {
+        "class": "Tomato mold leaf",
+        "box": [
+          1,
+          122,
+          285,
+          354
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "gray%20leaf%20spot.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\gray%20leaf%20spot.jpg",
+    "width": 482,
+    "height": 378,
+    "leaf_annotations": [
+      {
+        "class": "Corn Gray leaf spot",
+        "box": [
+          1,
+          1,
+          482,
+          375
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Resized_DSC_0191_Rust-Closeup.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Resized_DSC_0191_Rust-Closeup.jpg",
+    "width": 1054,
+    "height": 702,
+    "leaf_annotations": [
+      {
+        "class": "Corn rust leaf",
+        "box": [
+          1,
+          8,
+          1016,
+          701
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Early+Blight+-+Tomatoes.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Early+Blight+-+Tomatoes.jpg",
+    "width": 350,
+    "height": 263,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Early blight leaf",
+        "box": [
+          35,
+          18,
+          324,
+          263
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "tomato%2Bseptoria%2Bleaf%2Bspot2.JPG.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\tomato%2Bseptoria%2Bleaf%2Bspot2.JPG.jpg",
+    "width": 1600,
+    "height": 1200,
+    "leaf_annotations": [
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          1,
+          105,
+          1297,
+          823
+        ]
+      },
+      {
+        "class": "Tomato Septoria leaf spot",
+        "box": [
+          545,
+          269,
+          1377,
+          1094
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "stock-photo-peach-with-leaf-isolated-on-white-with-clipping-path-494602609.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\stock-photo-peach-with-leaf-isolated-on-white-with-clipping-path-494602609.jpg",
+    "width": 450,
+    "height": 470,
+    "leaf_annotations": [
+      {
+        "class": "Peach leaf",
+        "box": [
+          236,
+          70,
+          427,
+          299
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Apple-Scab-Mulrooney.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Apple-Scab-Mulrooney.jpg",
+    "width": 600,
+    "height": 898,
+    "leaf_annotations": [
+      {
+        "class": "Apple Scab Leaf",
+        "box": [
+          132,
+          93,
+          489,
+          832
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "27013702151_95bd415ba9_o.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\27013702151_95bd415ba9_o.jpg",
+    "width": 800,
+    "height": 500,
+    "leaf_annotations": [
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          176,
+          92,
+          646,
+          369
+        ]
+      },
+      {
+        "class": "Potato leaf early blight",
+        "box": [
+          188,
+          374,
+          724,
+          500
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Blackberry-black-raspberry-1024x707.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Blackberry-black-raspberry-1024x707.jpg",
+    "width": 1024,
+    "height": 707,
+    "leaf_annotations": [
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          76,
+          383,
+          200,
+          499
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          58,
+          276,
+          187,
+          402
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          1,
+          360,
+          85,
+          493
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          191,
+          2,
+          248,
+          120
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          1,
+          1,
+          95,
+          97
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          103,
+          591,
+          236,
+          705
+        ]
+      },
+      {
+        "class": "Raspberry leaf",
+        "box": [
+          278,
+          392,
+          414,
+          475
+        ]
+      }
+    ]
+  },
+  {
+    "filename": "Grape_leaf_01.jpg",
+    "resolved_path": "E:\\New folder\\TRAIN\\Grape_leaf_01.jpg",
+    "width": 2374,
+    "height": 3090,
+    "leaf_annotations": [
+      {
+        "class": "grape leaf",
+        "box": [
+          94,
+          491,
+          2333,
+          2975
+        ]
+      }
+    ]
+  }
+]

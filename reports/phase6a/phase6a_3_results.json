@@ -1,0 +1,244 @@
+{
+  "checkpoint_audit": {
+    "active_checkpoint": "saved_models\\experiments\\mobilenet_v3_small_final\\classifier.pt",
+    "sha256": "6fff52f1449e82e663ad1d4f884e5fa3576e2c04e517e9274f1c6237e9071213",
+    "verified": true,
+    "temperature": 1.0,
+    "review_threshold": 0.6
+  },
+  "test_cases": {
+    "case_1_single_leaf_no_candidates": {
+      "specimen": "0055dd26-23a7-4415-ac61-e0b44ebfaf80___RS_HL 5672.JPG",
+      "candidate_count": 0,
+      "state": "NO_CANDIDATES_IDENTIFIED",
+      "regions_checked": 9
+    },
+    "case_2_single_leaf_with_candidates": {
+      "specimen": "00075aa8-d81a-4184-8541-b692b78d398a___FREC_Scab 3335.JPG",
+      "candidate_count": 8,
+      "state": "CANDIDATES_IDENTIFIED",
+      "top_class": "Apple___Apple_scab",
+      "top_score": 0.9868232011795044
+    },
+    "case_3_whole_plant_no_candidates": {
+      "specimen": "000146ff-92a4-4db6-90ad-8fce2ae4fddd___GH_HL Leaf 259.1.JPG",
+      "candidate_count": 0,
+      "state": "NO_CANDIDATES_IDENTIFIED",
+      "regions_checked": 9
+    },
+    "case_4_whole_plant_multiple_candidates": {
+      "specimen": "Powdery-Mildew-on-squash.jpg",
+      "candidate_count": 7,
+      "state": "CANDIDATES_IDENTIFIED",
+      "regions_checked": 24
+    },
+    "case_5_aspect_ratios": [
+      {
+        "description": "Square Standard",
+        "dimensions": "256x256",
+        "regions_checked": 9,
+        "candidate_count": 0,
+        "status": "OK"
+      },
+      {
+        "description": "Square High-Res",
+        "dimensions": "600x600",
+        "regions_checked": 16,
+        "candidate_count": 0,
+        "status": "OK"
+      },
+      {
+        "description": "Landscape 4:3",
+        "dimensions": "800x600",
+        "regions_checked": 24,
+        "candidate_count": 0,
+        "status": "OK"
+      },
+      {
+        "description": "Portrait 3:4",
+        "dimensions": "600x800",
+        "regions_checked": 24,
+        "candidate_count": 0,
+        "status": "OK"
+      },
+      {
+        "description": "Ultra-Wide 16:9",
+        "dimensions": "1280x720",
+        "regions_checked": 24,
+        "candidate_count": 0,
+        "status": "OK"
+      },
+      {
+        "description": "Extreme Aspect",
+        "dimensions": "2048x512",
+        "regions_checked": 24,
+        "candidate_count": 0,
+        "status": "OK"
+      }
+    ],
+    "case_6_error_diagnostics": {
+      "empty_file": 422,
+      "corrupt_file": 422,
+      "small_dimensions": 422,
+      "oversized_upload": 413,
+      "invalid_mode": 422
+    },
+    "case_7_inference_failure_handled": true,
+    "case_8_offline_comparison": [
+      {
+        "image_name": "Black%20rot%20on%20foliage.jpg",
+        "dimensions": "1060x795",
+        "offline_phase4_1": {
+          "raw_windows": 105,
+          "foliar_filtered": 105,
+          "candidate_count": 4,
+          "top_candidate": {
+            "box": [
+              742,
+              446,
+              1060,
+              764
+            ],
+            "predicted_class": "Tomato___Late_blight",
+            "confidence": 0.895966112613678
+          }
+        },
+        "fastapi_deployed": {
+          "regions_checked": 24,
+          "candidate_count": 1,
+          "screening_state": "CANDIDATES_IDENTIFIED",
+          "top_candidate": {
+            "predicted_class": "Tomato___Late_blight",
+            "confidence": 0.7469835877418518,
+            "box": {
+              "left": 748,
+              "top": 374,
+              "right": 1050,
+              "bottom": 676
+            }
+          }
+        }
+      },
+      {
+        "image_name": "Powdery-Mildew-on-squash.jpg",
+        "dimensions": "800x598",
+        "offline_phase4_1": {
+          "raw_windows": 105,
+          "foliar_filtered": 105,
+          "candidate_count": 10,
+          "top_candidate": {
+            "box": [
+              630,
+              315,
+              780,
+              465
+            ],
+            "predicted_class": "Squash___Powdery_mildew",
+            "confidence": 0.9682528972625732
+          }
+        },
+        "fastapi_deployed": {
+          "regions_checked": 24,
+          "candidate_count": 7,
+          "screening_state": "CANDIDATES_IDENTIFIED",
+          "top_candidate": {
+            "predicted_class": "Squash___Powdery_mildew",
+            "confidence": 0.9529393911361694,
+            "box": {
+              "left": 282,
+              "top": 282,
+              "right": 509,
+              "bottom": 509
+            }
+          }
+        }
+      },
+      {
+        "image_name": "backus-056-potato-blight.jpg",
+        "dimensions": "2848x2136",
+        "offline_phase4_1": {
+          "raw_windows": 105,
+          "foliar_filtered": 105,
+          "candidate_count": 4,
+          "top_candidate": {
+            "box": [
+              1794,
+              1282,
+              2648,
+              2136
+            ],
+            "predicted_class": "Potato___Late_blight",
+            "confidence": 0.9104838371276855
+          }
+        },
+        "fastapi_deployed": {
+          "regions_checked": 24,
+          "candidate_count": 2,
+          "screening_state": "CANDIDATES_IDENTIFIED",
+          "top_candidate": {
+            "predicted_class": "Potato___Late_blight",
+            "confidence": 0.8779248595237732,
+            "box": {
+              "left": 1509,
+              "top": 1006,
+              "right": 2321,
+              "bottom": 1818
+            }
+          }
+        }
+      },
+      {
+        "image_name": "pepper_leaf.jpg",
+        "dimensions": "300x400",
+        "offline_phase4_1": {
+          "raw_windows": 77,
+          "foliar_filtered": 77,
+          "candidate_count": 1,
+          "top_candidate": {
+            "box": [
+              0,
+              0,
+              112,
+              112
+            ],
+            "predicted_class": "Corn_(maize)___Northern_Leaf_Blight",
+            "confidence": 0.803688108921051
+          }
+        },
+        "fastapi_deployed": {
+          "regions_checked": 20,
+          "candidate_count": 1,
+          "screening_state": "CANDIDATES_IDENTIFIED",
+          "top_candidate": {
+            "predicted_class": "Corn_(maize)___Northern_Leaf_Blight",
+            "confidence": 0.8178854584693909,
+            "box": {
+              "left": 0,
+              "top": 0,
+              "right": 128,
+              "bottom": 128
+            }
+          }
+        }
+      }
+    ]
+  },
+  "latency_measurements": {
+    "single_leaf": {
+      "window_generation_ms": 0.027384001878090203,
+      "crop_preprocessing_ms": 0.4458999988855794,
+      "model_inference_ms": 164.59622799884528,
+      "postprocessing_ms": 1.681492002098821,
+      "total_latency_ms": 166.7650199990021,
+      "p95_ms": 196.4785199990729
+    },
+    "whole_plant": {
+      "window_generation_ms": 0.05428799951914698,
+      "crop_preprocessing_ms": 2.058744000387378,
+      "model_inference_ms": 387.6805560005596,
+      "postprocessing_ms": 13.305100000579841,
+      "total_latency_ms": 403.10640000156127,
+      "p95_ms": 407.0305199944414
+    }
+  }
+}

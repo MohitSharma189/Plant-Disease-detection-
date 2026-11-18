@@ -1,0 +1,15 @@
+{
+  "model_architecture": "MobileNetV3-Small",
+  "checkpoint": "best_model.pth",
+  "checkpoint_sha256": "6190f54c56ebbb7f4a663b5eb88a53c6f70926e482e084d76d624c2a12725009",
+  "image_size": 224,
+  "num_classes": 38,
+  "calibration_temperature": 0.5538127422332764,
+  "review_threshold": 0.2231346070766449,
+  "review_threshold_95": 0.2231346070766449,
+  "review_threshold_90": 0.2231346070766449,
+  "calibrated_on_partition": "calibration",
+  "calibration_samples": 5429,
+  "manifest_sha256": "f9ef8b9dcd6823f2021a0f24b94e2330adef4a7be01dc7bf1c652c0d6be15868",
+  "generated_timestamp": "2026-11-12T09:35:39Z"
+}

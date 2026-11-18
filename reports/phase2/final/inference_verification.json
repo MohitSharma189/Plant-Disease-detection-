@@ -1,0 +1,11 @@
+{
+  "verified": true,
+  "predicted_class_idx": 6,
+  "confidence": 0.17840516567230225,
+  "has_nan": false,
+  "has_inf": false,
+  "output_shape": [
+    1,
+    38
+  ]
+}

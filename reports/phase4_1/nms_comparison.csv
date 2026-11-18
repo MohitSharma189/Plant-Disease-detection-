@@ -1,0 +1,9 @@
+nms_strategy,class_iou,cross_iou,max_candidates,mean_retained,recall_iou10,precision_iou10,recall_iou25,precision_iou25,f1_iou25,recall_iou50,fp_per_img_iou25,dups_iou25
+Class-wise IoU 0.55 (Baseline NMS),0.55,None,8,6.4700,0.5353,0.2226,0.3086,0.1283,0.1812,0.0483,5.6400,59
+Class-wise IoU 0.45,0.45,None,8,6.4400,0.5428,0.2267,0.3123,0.1304,0.1840,0.0520,5.6000,49
+Class-wise IoU 0.65,0.65,None,8,6.5300,0.5242,0.2159,0.2937,0.1210,0.1714,0.0483,5.7400,70
+"Hybrid NMS (Class 0.55, Cross 0.75, Max 8)",0.55,0.75,8,6.4400,0.5316,0.2220,0.3086,0.1289,0.1818,0.0483,5.6100,58
+"Hybrid NMS (Class 0.50, Cross 0.70, Max 8)",0.5,0.7,8,6.4200,0.5353,0.2243,0.3011,0.1262,0.1778,0.0446,5.6100,52
+"Hybrid NMS (Class 0.50, Cross 0.70, Max 10) [Selected]",0.5,0.7,10,7.7900,0.5725,0.1977,0.3457,0.1194,0.1775,0.0632,6.8600,72
+"Hybrid NMS (Class 0.50, Cross 0.70, Max 12)",0.5,0.7,12,9.1300,0.6022,0.1774,0.3903,0.1150,0.1777,0.0743,8.0800,87
+"Aggressive Cross-Class (Class 0.45, Cross 0.60, Max 8)",0.45,0.6,8,6.4000,0.5390,0.2266,0.3160,0.1328,0.1870,0.0520,5.5500,47

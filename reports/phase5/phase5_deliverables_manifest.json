@@ -1,0 +1,54 @@
+{
+  "reports/phase5/architecture_comparison.csv": {
+    "sha256": "b784a8087c01fcfb3d7ec61ae492ee5fd905b5e77ceb70363737fa81bd231222",
+    "size_bytes": 743
+  },
+  "reports/phase5/classification_metrics.csv": {
+    "sha256": "b43df963c9d95f6ab7e6561ff6f4995982eec78cab42aff2c21377144ac97e05",
+    "size_bytes": 693
+  },
+  "reports/phase5/external_plantdoc_results.csv": {
+    "sha256": "2527eb51f8d6484a95cb11999c84dc51613dbb84cb09da7d735d0a394be73501",
+    "size_bytes": 335
+  },
+  "reports/phase5/calibration_comparison.csv": {
+    "sha256": "67c2afeef7d60a986ef693b7fd534ffa4fe1a47fafd1f2c835ddd96710898b2f",
+    "size_bytes": 446
+  },
+  "reports/phase5/efficiency_benchmark.csv": {
+    "sha256": "e32867f8b3a9fbd973b16113aca7722fcac500476514647594dd56fad27bbaff",
+    "size_bytes": 360
+  },
+  "reports/phase5/per_class_metrics.csv": {
+    "sha256": "64769dffc5c3542b0f940773716fc3650727d71e2c94157b69dab40059891a6d",
+    "size_bytes": 12786
+  },
+  "reports/phase5/checkpoint_provenance.json": {
+    "sha256": "3c26d6caa1542d91f38be86437d32016b64af4aab084b75b7fae47c9902ff419",
+    "size_bytes": 1532
+  },
+  "reports/phase5/performance_comparison_charts.png": {
+    "sha256": "9ae4b197488dddf71c26d04e37bd2ed50e5e39ec123a190710fd60f64ec54930",
+    "size_bytes": 299726
+  },
+  "reports/phase5/PHASE5_COMPLETION_REPORT.md": {
+    "sha256": "4b4133ec99f9761fcee1c704781b33b7fbfbccbac2209992fdd987beca08d2d7",
+    "size_bytes": 4864
+  },
+  "reports/phase5/confusion_matrices/mobilenet_v3_small_confusion_matrix.png": {
+    "sha256": "f1b987ac11a999eeedea51028a9dca8edb3e201019a9813d3acdeb5c9cd1f94e",
+    "size_bytes": 87047
+  },
+  "reports/phase5/confusion_matrices/mobilenet_v3_large_confusion_matrix.png": {
+    "sha256": "b155bb6c0cbf02f8b34dba49060269f924c7131f67fbe18ac52d70c62086261d",
+    "size_bytes": 87621
+  },
+  "reports/phase5/confusion_matrices/efficientnet_b0_confusion_matrix.png": {
+    "sha256": "70f193eae5721bb6ec0c36c6a21642733243372acebb70644bd588d27e94679b",
+    "size_bytes": 86425
+  },
+  "reports/phase5/confusion_matrices/resnet18_confusion_matrix.png": {
+    "sha256": "94087cde2947a12e0d959872990a1afcc2f41b23aa9fe1f14db2bef31806b811",
+    "size_bytes": 85749
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "metadata": {
+    "timestamp": "2026-11-14 19:44:27",
+    "model_path": "E:\\Plant Disease Detection-20261111T181021Z-1-001\\Plant Disease Detection\\saved_models\\experiments\\mobilenet_v3_small_final\\classifier.pt",
+    "review_threshold": 0.6,
+    "calibration_enabled": false
+  },
+  "scenarios": {
+    "scenario_1_healthy_single_leaf": {
+      "type": "REAL_MODEL_INFERENCE",
+      "file": "data/processed/PlantVillage/Apple___healthy/0055dd26-23a7-4415-ac61-e0b44ebfaf80___RS_HL 5672.JPG",
+      "status_code": 200,
+      "predicted_class": "Apple___healthy",
+      "confidence": 0.9899128675460815,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "screening_state": "NO_CANDIDATES_IDENTIFIED",
+      "candidate_count": 0,
+      "passed": true
+    },
+    "scenario_2_diseased_single_leaf": {
+      "type": "REAL_MODEL_INFERENCE",
+      "file": "data/processed/PlantVillage/Apple___Apple_scab/00075aa8-d81a-4184-8541-b692b78d398a___FREC_Scab 3335.JPG",
+      "status_code": 200,
+      "predicted_class": "Apple___Apple_scab",
+      "confidence": 0.9555572867393494,
+      "prediction_state": "HIGH_CONFIDENCE",
+      "screening_state": "CANDIDATES_IDENTIFIED",
+      "candidate_count": 8,
+      "passed": true
+    },
+    "scenario_3_uncertain_prediction": {
+      "type": "REAL_MODEL_INFERENCE",
+      "file": "C:\\Users\\Mohit Sharma\\.gemini\\antigravity\\brain\\ef968360-f136-470a-a159-8b64d2823609\\.user_uploaded\\media_1794656629400_32844b42.jpg",
+      "status_code": 200,
+      "predicted_class": "Corn_(maize)___healthy",
+      "confidence": 0.26612749695777893,
+      "prediction_state": "LOW_CONFIDENCE_UNCERTAIN",
+      "is_uncertain": true,
+      "is_healthy": true,
+      "passed": true
+    },
+    "scenario_4_single_leaf_no_candidates": {
+      "type": "REAL_MODEL_INFERENCE",
+      "candidate_count": 0,
+      "screening_state": "NO_CANDIDATES_IDENTIFIED",
+      "safety_disclaimer": "Important Safety Notice: Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening only detects conspicuous foliar patches matching trained disease categories above the threshold.",
+      "passed": true
+    },
+    "scenario_5_single_leaf_multiple_candidates": {
+      "type": "REAL_MODEL_INFERENCE",
+      "candidate_count": 8,
+      "screening_state": "CANDIDATES_IDENTIFIED",
+      "overlay_present": true,
+      "passed": true
+    },
+    "scenario_6_whole_plant_mode": {
+      "type": "REAL_MODEL_INFERENCE",
+      "mode": "whole_plant",
+      "overall_prediction_present": false,
+      "regions_checked": 24,
+      "candidate_count": 0,
+      "passed": true
+    },
+    "scenario_7_whole_plant_no_candidates": {
+      "type": "REAL_MODEL_INFERENCE",
+      "candidate_count": 0,
+      "screening_state": "NO_CANDIDATES_IDENTIFIED",
+      "safety_disclaimer": "Important Safety Notice: Lack of candidate screening regions does not establish that the leaf or plant is healthy or disease-free. Candidate screening only detects conspicuous foliar patches matching trained disease categories above the threshold.",
+      "passed": true
+    },
+    "scenario_8_whole_plant_multiple_candidates": {
+      "type": "REAL_MODEL_INFERENCE",
+      "candidate_count": 2,
+      "regions_checked": 12,
+      "screening_state": "CANDIDATES_IDENTIFIED",
+      "top_candidate": "Potato___Late_blight",
+      "passed": true
+    },
+    "scenario_9_invalid_uploads": {
+      "type": "AUTOMATED_ASGI_VALIDATION",
+      "empty_code": 422,
+      "corrupt_code": 422,
+      "small_code": 422,
+      "oversized_code": 413,
+      "txt_code": 422,
+      "passed": true
+    },
+    "scenario_10_backend_failures": {
+      "type": "AUTOMATED_ASGI_SIMULATION",
+      "bad_mode_code": 422,
+      "no_model_code": 503,
+      "passed": true
+    },
+    "scenario_11_dimensions": {
+      "type": "REAL_MODEL_INFERENCE",
+      "cases": [
+        {
+          "name": "Square Standard",
+          "dimensions": "256x256",
+          "status_code": 200,
+          "regions_checked": 9,
+          "candidate_count": 0,
+          "passed": true
+        },
+        {
+          "name": "Landscape 4:3",
+          "dimensions": "800x600",
+          "status_code": 200,
+          "regions_checked": 12,
+          "candidate_count": 0,
+          "passed": true
+        },
+        {
+          "name": "Portrait 3:4",
+          "dimensions": "600x800",
+          "status_code": 200,
+          "regions_checked": 12,
+          "candidate_count": 0,
+          "passed": true
+        },
+        {
+          "name": "Widescreen 16:9",
+          "dimensions": "1280x720",
+          "status_code": 200,
+          "regions_checked": 15,
+          "candidate_count": 0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    "scenario_12_frontend_responsive_a11y": {
+      "type": "STATIC_AUDIT",
+      "css_breakpoints": {
+        "desktop_1050": true,
+        "tablet_900": true,
+        "mobile_760": true,
+        "small_mobile_520": true,
+        "print_styles": true
+      },
+      "accessibility_features": {
+        "aria_live": true,
+        "role_alert": true,
+        "role_status": true,
+        "keyboard_dropzone": true
+      },
+      "passed": true
+    }
+  },
+  "benchmarks": {
+    "predict_endpoint_ms": {
+      "mean": 31.785300001502037,
+      "std": 0.5813697332020119,
+      "min": 30.851200004690327,
+      "max": 32.58260000438895,
+      "runs": [
+        31.883800009381957,
+        30.851200004690327,
+        32.09709998918697,
+        32.58260000438895,
+        31.511799999861978
+      ]
+    },
+    "screen_plant_single_leaf_ms": {
+      "mean": 273.4625799988862,
+      "std": 4.374229280039185,
+      "min": 266.77050000580493,
+      "max": 278.6123999976553,
+      "runs": [
+        271.71099999395665,
+        266.77050000580493,
+        272.29239999724086,
+        278.6123999976553,
+        277.9265999997733
+      ]
+    },
+    "screen_plant_whole_plant_ms": {
+      "mean": 228.77729999891017,
+      "std": 2.1174869956840623,
+      "min": 225.50390000105835,
+      "max": 231.83039999275934,
+      "runs": [
+        228.69030000583734,
+        225.50390000105835,
+        230.00969999702647,
+        227.85219999786932,
+        231.83039999275934
+      ]
+    }
+  },
+  "summary": {
+    "total_scenarios": 12,
+    "passed_scenarios": 12,
+    "all_passed": true
+  }
+}

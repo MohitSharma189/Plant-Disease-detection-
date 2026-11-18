@@ -1,0 +1,38 @@
+{
+  "mobilenet_v3_small": {
+    "display_name": "MobileNetV3-Small",
+    "checkpoint_path": "saved_models\\experiments\\architecture_benchmark\\mobilenet_v3_small\\best_model.pth",
+    "sha256": "6190f54c56ebbb7f4a663b5eb88a53c6f70926e482e084d76d624c2a12725009",
+    "size_bytes": 6353709,
+    "size_mb": 6.06,
+    "parameters": 1556806,
+    "timestamp": "2026-11-12T21:57:50Z"
+  },
+  "mobilenet_v3_large": {
+    "display_name": "MobileNetV3-Large",
+    "checkpoint_path": "saved_models\\experiments\\architecture_benchmark\\mobilenet_v3_large\\best_model.pth",
+    "sha256": "8ebfb512a071915ca9a7b508e52a9f3ac983ac31618674c43dfdbd6ac168394a",
+    "size_bytes": 17198721,
+    "size_mb": 16.4,
+    "parameters": 4250710,
+    "timestamp": "2026-11-12T22:01:35Z"
+  },
+  "efficientnet_b0": {
+    "display_name": "EfficientNet-B0",
+    "checkpoint_path": "saved_models\\experiments\\architecture_benchmark\\efficientnet_b0\\best_model.pth",
+    "sha256": "faba42992b190b4c6c37409634070f0a376e26dd6330bd1a6c930bc341f020cb",
+    "size_bytes": 16508977,
+    "size_mb": 15.74,
+    "parameters": 4056226,
+    "timestamp": "2026-11-12T22:07:46Z"
+  },
+  "resnet18": {
+    "display_name": "ResNet18",
+    "checkpoint_path": "saved_models\\experiments\\architecture_benchmark\\resnet18\\best_model.pth",
+    "sha256": "f2991bef8630f6e162923fe3224d8d68ba9128ae55ef5bb3ba1ab672f7ea55cf",
+    "size_bytes": 44863627,
+    "size_mb": 42.79,
+    "parameters": 11196006,
+    "timestamp": "2026-11-12T22:17:05Z"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "manifest_metadata": {
+    "title": "Plant Disease Screening System with MobileNetV3-Small: Phase 6A Reproducibility Manifest",
+    "version": "1.0.0",
+    "release_date": "2026-11-14",
+    "project_phase": "Phase 6A.6 Final Documentation and Release Readiness"
+  },
+  "deployed_model": {
+    "model_name": "MobileNetV3-Small (Phase 5 TorchScript Benchmark Export)",
+    "checkpoint_relative_path": "saved_models/experiments/mobilenet_v3_small_final/classifier.pt",
+    "sha256": "6fff52f1449e82e663ad1d4f884e5fa3576e2c04e517e9274f1c6237e9071213",
+    "parameter_count": 1560000,
+    "binary_size_bytes": 6354432,
+    "input_resolution": [224, 224, 3],
+    "input_color_space": "RGB",
+    "normalization": {
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225]
+    },
+    "output_classes_count": 38,
+    "class_names_source": "saved_models/experiments/mobilenet_v3_small_final/classifier_metadata.json"
+  },
+  "runtime_configuration": {
+    "calibration_enabled": false,
+    "temperature": 1.0,
+    "score_label": "Uncalibrated Model Score",
+    "operational_review_threshold": 0.6,
+    "screening_candidate_score_threshold": 0.6,
+    "single_leaf_crops_evaluated": 9,
+    "whole_plant_crops_evaluated": 24,
+    "crop_scale_fraction_single_leaf": 0.52,
+    "crop_scale_fraction_whole_plant": 0.38,
+    "sliding_grid_stride_fraction": 0.62,
+    "nms_iou_threshold": 0.55,
+    "blur_score_threshold": 25.0
+  },
+  "software_dependencies": {
+    "python": "3.12.5",
+    "torch": "2.15.0+cpu",
+    "fastapi": "0.115.6",
+    "starlette": "0.41.3",
+    "pydantic": "2.10.4",
+    "opencv_python": "4.10.0.84",
+    "pillow": "10.4.0",
+    "numpy": "1.26.4",
+    "uvicorn": "0.34.0",
+    "node": "v20+ / npm 11.16.0",
+    "react": "18.3.1",
+    "vite": "6.4.5"
+  },
+  "hardware_environment": {
+    "os": "Microsoft Windows 11 Home (64-bit)",
+    "cpu": "AMD Ryzen 7 5800HS with Radeon Graphics",
+    "physical_cores": 8,
+    "logical_threads": 16,
+    "base_clock_ghz": 3.2,
+    "ram_installed_gb": 16
+  },
+  "test_and_verification_commands": {
+    "unit_and_regression_tests": ".\\.venv\\Scripts\\pytest.exe backend/tests",
+    "final_smoke_test": ".\\.venv\\Scripts\\python.exe test_final_smoke.py",
+    "fullstack_12_scenario_test": ".\\.venv\\Scripts\\python.exe test_phase6a_4_fullstack.py",
+    "robustness_and_50run_benchmark": ".\\.venv\\Scripts\\python.exe run_phase6a_5_suite.py",
+    "frontend_production_build": "cd frontend; npm run build"
+  },
+  "historical_phase_report_index": {
+    "phase_6a_1_audit_and_decoupling": "reports/phase6a/PHASE6A_1_PROJECT_AUDIT.md",
+    "phase_6a_1_implementation": "reports/phase6a/PHASE6A_1_IMPLEMENTATION_REPORT.md",
+    "phase_6a_1_test_results": "reports/phase6a/PHASE6A_1_TEST_RESULTS.md",
+    "phase_6a_2_model_integration": "reports/phase6a/PHASE6A_2_MODEL_INTEGRATION_REPORT.md",
+    "phase_6a_2_inference_verification": "reports/phase6a/PHASE6A_2_INFERENCE_VERIFICATION.md",
+    "phase_6a_2_1_checkpoint_deployment": "reports/phase6a/PHASE6A_2_1_CHECKPOINT_DEPLOYMENT_REPORT.md",
+    "phase_6a_2_1_inference_verification": "reports/phase6a/PHASE6A_2_1_INFERENCE_VERIFICATION.md",
+    "phase_6a_3_screening_integration": "reports/phase6a/PHASE6A_3_SCREENING_INTEGRATION_REPORT.md",
+    "phase_6a_3_screening_verification": "reports/phase6a/PHASE6A_3_SCREENING_VERIFICATION.md",
+    "phase_6a_4_fullstack_integration": "reports/phase6a/PHASE6A_4_FULLSTACK_INTEGRATION_REPORT.md",
+    "phase_6a_4_e2e_test_results": "reports/phase6a/PHASE6A_4_END_TO_END_TEST_RESULTS.md",
+    "phase_6a_5_comprehensive_validation": "reports/phase6a/PHASE6A_5_COMPREHENSIVE_VALIDATION_REPORT.md",
+    "phase_6a_5_robustness_test_results": "reports/phase6a/PHASE6A_5_ROBUSTNESS_TEST_RESULTS.md",
+    "phase_6a_5_performance_benchmark": "reports/phase6a/PHASE6A_5_PERFORMANCE_BENCHMARK.md",
+    "phase_6a_6_completion_report": "reports/phase6a/PHASE6A_FINAL_COMPLETION_REPORT.md",
+    "phase_6a_6_release_readiness": "reports/phase6a/PHASE6A_RELEASE_READINESS_REPORT.md",
+    "phase_6a_6_final_test_results": "reports/phase6a/PHASE6A_FINAL_TEST_RESULTS.md"
+  }
+}
+

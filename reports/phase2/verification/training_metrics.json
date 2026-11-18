@@ -1,0 +1,39 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.5259473108270867,
+      "train_accuracy": 0.8232422604667381,
+      "validation_loss": 0.3481341568592763,
+      "validation_accuracy": 0.9346946284032377,
+      "validation_macro_f1": 0.9125207156302839,
+      "learning_rates": [
+        0.001
+      ],
+      "fine_tuned_backbone": false,
+      "seconds": 1065.484
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.0603930943217277,
+      "train_accuracy": 0.6495977684241987,
+      "validation_loss": 0.278087248864657,
+      "validation_accuracy": 0.9389256806475349,
+      "validation_macro_f1": 0.9153332480902484,
+      "learning_rates": [
+        1e-05,
+        0.0001
+      ],
+      "fine_tuned_backbone": true,
+      "seconds": 1435.297
+    }
+  ],
+  "best_summary": {
+    "best_epoch": 2,
+    "best_validation_loss": 0.278087248864657,
+    "best_validation_accuracy": 0.9389256806475349,
+    "best_validation_macro_f1": 0.9153332480902484,
+    "total_time_seconds": 2500.938,
+    "peak_ram_mb": 63.33462047576904
+  }
+}

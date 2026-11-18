@@ -1,0 +1,71 @@
+{
+  "seed": 42,
+  "data_dir": "data/processed/PlantVillage",
+  "split_manifest": "reports/generated/combined_split_manifest.json",
+  "model_dir": "E:\\Plant Disease Detection-20261111T181021Z-1-001\\Plant Disease Detection\\saved_models\\experiments\\architecture_benchmark\\mobilenet_v3_large",
+  "report_dir": "E:\\Plant Disease Detection-20261111T181021Z-1-001\\Plant Disease Detection\\reports\\phase5\\mobilenet_v3_large",
+  "architecture": "mobilenet_v3_large",
+  "head_dropout": 0.3,
+  "image_size": 224,
+  "batch_size": 8,
+  "epochs": 2,
+  "head_warmup_epochs": 1,
+  "patience": 5,
+  "minimum_validation_loss_delta": 0.001,
+  "learning_rate": 0.001,
+  "backbone_learning_rate": 1e-05,
+  "head_fine_tune_learning_rate": 0.0001,
+  "cosine_warmup_epochs": 1,
+  "label_smoothing": 0.1,
+  "weight_decay": 0.0001,
+  "num_workers": 0,
+  "deterministic": true,
+  "augmentation": {
+    "crop_scale": [
+      0.78,
+      1.0
+    ],
+    "crop_ratio": [
+      0.85,
+      1.15
+    ],
+    "horizontal_flip_probability": 0.5,
+    "vertical_flip_probability": 0.1,
+    "color_jitter_probability": 0.8,
+    "brightness": 0.22,
+    "contrast": 0.22,
+    "saturation": 0.2,
+    "hue": 0.04,
+    "rotation_degrees": 30,
+    "translation_fraction": 0.08,
+    "scale_range": [
+      0.88,
+      1.12
+    ],
+    "shear_degrees": 8,
+    "perspective_probability": 0.15,
+    "perspective_distortion": 0.12,
+    "motion_blur_probability": 0.08,
+    "gaussian_blur_probability": 0.12,
+    "gaussian_blur_sigma": [
+      0.1,
+      1.5
+    ],
+    "shadow_probability": 0.15,
+    "random_erasing_probability": 0.15,
+    "random_erasing_scale": [
+      0.02,
+      0.12
+    ],
+    "random_erasing_ratio": [
+      0.3,
+      3.3
+    ]
+  },
+  "split_fractions": {
+    "train": 0.7,
+    "validation": 0.1,
+    "calibration": 0.1,
+    "test": 0.1
+  }
+}

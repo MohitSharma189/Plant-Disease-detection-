@@ -1,0 +1,43 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
+*.db
+*.sqlite3
+*.log
+*.bak
+tmp_mpl/
+.env
+.env.*
+!.env.example
+
+# Datasets (excluded due to size)
+data/raw/*
+data/processed/*
+data/masks/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/masks/.gitkeep
+
+# Saved models (keep only the deployed MobileNetV3-Small TorchScript artifact and mappings)
+saved_models/*
+!saved_models/.gitkeep
+!saved_models/class_mapping.json
+!saved_models/experiments/
+saved_models/experiments/*
+!saved_models/experiments/mobilenet_v3_small_final/
+saved_models/experiments/mobilenet_v3_small_final/*
+!saved_models/experiments/mobilenet_v3_small_final/classifier.pt
+!saved_models/experiments/mobilenet_v3_small_final/classifier_metadata.json
+
+# Generated caches & intermediate training checkpoints in reports
+reports/generated/*
+!reports/generated/.gitkeep
+reports/**/*.pt
+reports/**/*.pth

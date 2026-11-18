@@ -1,0 +1,31 @@
+{
+  "pipeline_name": "sliding_window_candidate_screening",
+  "version": "1.0.0",
+  "model_architecture": "MobileNetV3-Small",
+  "checkpoint": "best_model.pth",
+  "calibrated_temperature": 0.5538127422332764,
+  "phase3_review_threshold": 0.2231346070766449,
+  "recommended_review_threshold": 0.7,
+  "window_parameters": {
+    "mode_whole_plant_fraction": 0.38,
+    "mode_single_leaf_fraction": 0.52,
+    "stride_factor": 0.62,
+    "max_windows": 36,
+    "minimum_crop_dimension": 128,
+    "input_resolution": [
+      224,
+      224
+    ]
+  },
+  "candidate_filtering": {
+    "min_candidate_score": 0.6,
+    "suppress_healthy_candidates": true,
+    "nms_iou_threshold": 0.55,
+    "max_retained_candidates": 8
+  },
+  "performance_profile": {
+    "mean_latency_ms": 117.16,
+    "localization_recall_iou25": 0.1814,
+    "localization_precision_iou25": 0.0899
+  }
+}

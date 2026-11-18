@@ -1,0 +1,6 @@
+context_padding_pct,padding_fraction,total_crops_evaluated,correct_predictions,top1_classification_accuracy,mean_calibrated_confidence
+0%,0.0,261,98,0.3755,0.5966
+5%,0.05,263,103,0.3916,0.6081
+10%,0.1,264,103,0.3902,0.6016
+15%,0.15,264,114,0.4318,0.5859
+20%,0.2,264,115,0.4356,0.6130

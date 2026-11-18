@@ -1,0 +1,15 @@
+metric,value
+total_test_images,236
+total_ground_truth_leaves,452
+mean_leaves_per_image,1.92
+sliding_windows_per_image_max,36
+mean_proposals_per_image,20.60
+mean_retained_candidates_per_image,3.86
+mean_iou_all_candidates,0.1540
+candidate_leaf_recall_iou10,0.5000
+candidate_leaf_recall_iou25,0.1814
+candidate_leaf_recall_iou50,0.0310
+mean_inference_latency_ms,117.16
+median_inference_latency_ms,105.11
+calibrated_temperature,0.5538
+review_threshold_calibrated,0.2231

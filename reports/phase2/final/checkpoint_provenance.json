@@ -1,0 +1,123 @@
+{
+  "provenance_version": "1.0",
+  "experiment_type": "definitive_baseline",
+  "is_final_research_baseline": true,
+  "timestamp_utc": "2026-11-12T08:40:54.173456+00:00",
+  "output_directories": {
+    "model_dir": "saved_models\\experiments\\mobilenet_v3_small_final",
+    "report_dir": "reports\\phase2\\final"
+  },
+  "base_model": {
+    "architecture": "MobileNetV3-Small",
+    "source": "torchvision.models.mobilenet_v3_small",
+    "pretrained_weights": "MobileNet_V3_Small_Weights.DEFAULT",
+    "pretrained_weights_file": "mobilenet_v3_small-047dcff4.pth",
+    "pretrained_weights_sha256": "047dcff4addef86ea5bc2eff13c9614dc11f47ab1160d0a71a25e7db994f4e1f"
+  },
+  "environment": {
+    "platform": "win32",
+    "processor": "AMD Ryzen 7 5800HS with Radeon Graphics",
+    "python_version": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+    "torch_version": "2.15.0+cpu",
+    "torchvision_version": "0.29.2+cpu",
+    "cpu_threads": 8,
+    "cuda_available": false
+  },
+  "training_dataset": {
+    "split_manifest": "reports\\generated\\combined_split_manifest.json",
+    "split_manifest_sha256": "f9ef8b9dcd6823f2021a0f24b94e2330adef4a7be01dc7bf1c652c0d6be15868",
+    "class_count": 38,
+    "classes": [
+      "Apple___Apple_scab",
+      "Apple___Black_rot",
+      "Apple___Cedar_apple_rust",
+      "Apple___healthy",
+      "Blueberry___healthy",
+      "Cherry_(including_sour)___Powdery_mildew",
+      "Cherry_(including_sour)___healthy",
+      "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+      "Corn_(maize)___Common_rust_",
+      "Corn_(maize)___Northern_Leaf_Blight",
+      "Corn_(maize)___healthy",
+      "Grape___Black_rot",
+      "Grape___Esca_(Black_Measles)",
+      "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+      "Grape___healthy",
+      "Orange___Haunglongbing_(Citrus_greening)",
+      "Peach___Bacterial_spot",
+      "Peach___healthy",
+      "Pepper,_bell___Bacterial_spot",
+      "Pepper,_bell___healthy",
+      "Potato___Early_blight",
+      "Potato___Late_blight",
+      "Potato___healthy",
+      "Raspberry___healthy",
+      "Soybean___healthy",
+      "Squash___Powdery_mildew",
+      "Strawberry___Leaf_scorch",
+      "Strawberry___healthy",
+      "Tomato___Bacterial_spot",
+      "Tomato___Early_blight",
+      "Tomato___Late_blight",
+      "Tomato___Leaf_Mold",
+      "Tomato___Septoria_leaf_spot",
+      "Tomato___Spider_mites Two-spotted_spider_mite",
+      "Tomato___Target_Spot",
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "Tomato___Tomato_mosaic_virus",
+      "Tomato___healthy"
+    ],
+    "partitions": {
+      "train_total": 40151,
+      "plantvillage_train": 37992,
+      "plantdoc_train_clean": 2159,
+      "validation": 5436,
+      "calibration": 5429,
+      "test": 5417
+    },
+    "leakage_prevention": {
+      "exact_duplicates_to_test_excluded": 9,
+      "near_duplicates_to_test_excluded": 4,
+      "internal_plantdoc_duplicates_excluded": 53,
+      "official_plantdoc_test_partition_status": "ISOLATED_UNTOUCHED"
+    }
+  },
+  "hyperparameters": {
+    "seed": 42,
+    "deterministic": true,
+    "batch_size": 8,
+    "image_size": 224,
+    "head_dropout": 0.3,
+    "label_smoothing": 0.1,
+    "learning_rate": 0.001,
+    "backbone_learning_rate": 1e-05,
+    "head_fine_tune_learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "head_warmup_epochs": 1,
+    "total_epochs": 3,
+    "patience": 2
+  },
+  "best_checkpoint": {
+    "best_epoch": 3,
+    "best_validation_loss": 0.2514042956740859,
+    "best_validation_accuracy": 0.9514348785871964,
+    "best_validation_macro_f1": 0.9318640594598698,
+    "checkpoint_files": {
+      "best_model.pth": "6190f54c56ebbb7f4a663b5eb88a53c6f70926e482e084d76d624c2a12725009",
+      "best_state.pt": "97cfe371e54b040bfa7b722e3fb9e4a1d81fbc5e850337acbcd42394455852cc",
+      "classifier.pt": "6fff52f1449e82e663ad1d4f884e5fa3576e2c04e517e9274f1c6237e9071213",
+      "latest_checkpoint.pth": "79551f03e04d37ac65ab2ab5756d9aeb5a37a277149b726d5b25d179f3e3080d"
+    }
+  },
+  "inference_verification": {
+    "verified": true,
+    "predicted_class_idx": 6,
+    "confidence": 0.17840516567230225,
+    "has_nan": false,
+    "has_inf": false,
+    "output_shape": [
+      1,
+      38
+    ]
+  }
+}

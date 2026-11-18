@@ -1,0 +1,86 @@
+<USER_REQUEST>
+Resolve the above issue too
+# PHASE 6A.1 – PROJECT AUDIT, APPLICATION ASSESSMENT AND RESULT PRESENTATION IMPROVEMENT
+
+## Project Information
+
+**Research Title:** Plant Disease Screening System with MobileNetV3-Small: Implementation, Exploratory Results, and Validation Gaps.
+
+**Existing Technology Stack:**
+- Frontend: React + Vite
+- Backend: FastAPI
+- Machine Learning: PyTorch
+- Primary model: MobileNetV3-Small
+- Screening: Optimized Phase 4.1 screening pipeline
+- Development environment: CPU-based Windows system
+
+## 1. OBJECTIVE
+
+We are beginning Phase 6A.1 of the research project.
+
+The objective is to audit the existing Plant Disease Screening System, understand its current implementation, identify integration issues and improve the presentation and handling of classification and screening results.
+
+The application should communicate predictions accurately, distinguish uncertain results from reliable model outputs, and present whole-leaf classification and candidate-region screening as separate processes.
+
+This is an existing research application. Improve the existing implementation rather than rebuilding it from scratch.
+
+## 2. PROJECT PRESERVATION RULES
+
+Follow these restrictions throughout the work:
+
+1. Do not delete, overwrite, rename or unnecessarily restructure existing files.
+2. Preserve all datasets, trained checkpoints, experiment outputs and research reports.
+3. Do not retrain models.
+4. Do not change model preprocessing, normalization, image dimensions or class mappings.
+5. Do not change the screening algorithm or its experimental thresholds.
+6. Do not modify previously reported experimental results.
+7. Do not fabricate performance metrics or test results.
+8. Do not introduce unnecessary dependencies.
+9. Preserve the existing React/Vite and FastAPI architecture.
+10. Retain the existing website's visual identity.
+11. Do not present the application as an autonomous or professionally validated disease diagnostic system.
+12. Make changes incrementally and verify them.
+
+Before modifying an
+<truncated 9459 bytes>
+project audit.
+
+Step 3: Identify the exact frontend and backend files requiring modification.
+
+Step 4: Verify the existing confidence threshold and prediction-state logic.
+
+Step 5: Implement the improved prediction-state handling.
+
+Step 6: Improve the result presentation while retaining the existing design.
+
+Step 7: Verify screening-result presentation and backend/frontend consistency.
+
+Step 8: Run the required tests.
+
+Step 9: Generate the implementation and test reports.
+
+Step 10: Provide a concise completion summary with modified files, test outcomes and unresolved issues.
+
+If an important technical dependency is missing or a threshold cannot be verified, document the issue rather than making assumptions.
+
+## FINAL INSTRUCTION
+
+Phase 6A.1 must leave the existing application in a better documented and more reliable state.
+
+Prioritize scientific correctness, reproducibility, transparent uncertainty communication, clean implementation and professional presentation.
+
+Do not sacrifice research accuracy for a visually impressive result.
+
+Begin by inspecting the existing project and proceed incrementally. Do not skip the audit or modify research artifacts.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-14T17:20:25+05:30.
+
+The user's current state is as follows:
+Other open documents:
+- e:\Plant Disease Detection-20261111T181021Z-1-001\Plant Disease Detection\reports\research_paper\plant_disease_research_paper_package.zip (LANGUAGE_UNSPECIFIED)
+- e:\Plant Disease Detection-20261111T181021Z-1-001\Plant Disease Detection\reports\research_paper\main.tex (LANGUAGE_UNSPECIFIED)
+- e:\Plant Disease Detection-20261111T181021Z-1-001\Plant Disease Detection\reports\research_paper\final_correction\main.tex (LANGUAGE_UNSPECIFIED)
+- e:\Plant Disease Detection-20261111T181021Z-1-001\Plant Disease Detection\scratch\final_paper_data.py (LANGUAGE_UNSPECIFIED)
+- e:\Plant Disease Detection-20261111T181021Z-1-001\Plant Disease Detection\scratch\final_paper_expansion.py (LANGUAGE_UNSPECIFIED)
+</ADDITIONAL_METADATA>

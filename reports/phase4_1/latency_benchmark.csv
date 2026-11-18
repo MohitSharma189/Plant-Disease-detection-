@@ -1,0 +1,6 @@
+pipeline_stage,baseline_ms,optimized_ms,hardware
+Window Generation (Multi-scale & Aspect-aware),0.04,0.10,AMD Ryzen 7 5800HS (CPU)
+Foliar Saliency Pre-Filtering (ExG),0.00,24.16,NumPy vectorized (CPU)
+MobileNetV3-Small Crop Inference,99.87,461.62,PyTorch 2.15.0+cpu (8 threads)
+Hybrid NMS & Cross-Class Suppression,0.04,0.18,Python CPU
+Total End-to-End Latency per Image,167.02,844.25,AMD Ryzen 7 5800HS (CPU)

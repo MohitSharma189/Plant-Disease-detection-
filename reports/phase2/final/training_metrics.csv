@@ -1,0 +1,4 @@
+epoch,train_loss,train_accuracy,validation_loss,validation_accuracy,validation_macro_f1,fine_tuned_backbone,seconds
+1,1.5259,0.8232,0.3481,0.9347,0.9125,False,644.5
+2,2.0604,0.6496,0.2781,0.9389,0.9153,True,1877.2
+3,1.4269,0.8506,0.2514,0.9514,0.9319,True,1405.6

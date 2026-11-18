@@ -1,0 +1,33 @@
+{
+  "pipeline_name": "optimized_aspect_aware_candidate_screening",
+  "version": "2.0.0",
+  "model_architecture": "MobileNetV3-Small",
+  "checkpoint": "best_model.pth",
+  "checkpoint_sha256": "6190f54c56ebbb7f4a663b5eb88a53c6f70926e482e084d76d624c2a12725009",
+  "calibrated_temperature": 0.5538127422332764,
+  "phase3_review_threshold": 0.2231346070766449,
+  "window_parameters": {
+    "scale_fractions": [0.25, 0.40, 0.65],
+    "aspect_ratios": [
+      [1.0, 1.0],
+      [1.333, 1.0],
+      [1.0, 1.333]
+    ],
+    "stride_factor": 0.70,
+    "minimum_crop_dimension": 112,
+    "context_padding_fraction": 0.12,
+    "input_resolution": [224, 224]
+  },
+  "candidate_filtering": {
+    "foliar_saliency_filter": true,
+    "excess_green_threshold": 10,
+    "min_foliar_coverage": 0.08,
+    "min_candidate_score": 0.55,
+    "suppress_healthy_candidates": true,
+    "nms_class_iou_threshold": 0.50,
+    "nms_cross_class_iou_threshold": 0.70,
+    "max_retained_candidates": 10
+  },
+  "selection_rationale": "Optimized on 100-image development partition (dev_set.json). Multi-scale + aspect-ratio windows eliminate leaf geometry mismatch; foliar pre-filtering rejects background clutter before CNN inference; 12% context padding provides boundary features (+5.6% classification accuracy); hybrid NMS eliminates duplicate multi-scale proposals for the same leaf."
+}
+
